@@ -1,15 +1,11 @@
 import { useForm } from "react-hook-form";
 
+import type { LoginOptions } from "@auth0/auth0-acul-js/login";
 import {
   useErrors,
   useLoginIdentifiers,
-  usePasskeyAutofill,
-} from "@auth0/auth0-acul-react/login-id";
-import type {
-  ErrorItem,
-  IdentifierType,
-  LoginOptions,
-} from "@auth0/auth0-acul-react/types";
+} from "@auth0/auth0-acul-react/login";
+import type { ErrorItem, IdentifierType } from "@auth0/auth0-acul-react/types";
 
 import Captcha from "@/components/Captcha/index";
 import { ULThemeFormMessage } from "@/components/form/ULThemeFormMessage";
@@ -18,38 +14,27 @@ import LoginHeading from "@/components/login-page/LoginHeading";
 import LoginSubmitButton from "@/components/login-page/LoginSubmitButton";
 import PillField, { PillFieldLink } from "@/components/login-page/PillField";
 import { Form, FormField, FormItem } from "@/components/ui/form";
-import ULThemeCountryCodePicker from "@/components/ULThemeCountryCodePicker";
 import {
   FORGOT_LOGIN_ID_URL,
   FORGOT_PASSWORD_FALLBACK_URL,
   LOGIN_PAGE_COPY,
 } from "@/constants/loginPage";
 import { useCaptcha } from "@/hooks/useCaptcha";
-import {
-  isPhoneNumberSupported,
-  transformAuth0CountryCode,
-} from "@/utils/helpers/countryUtils";
 import { getIdentifierDetails } from "@/utils/helpers/identifierUtils";
 
-import { useLoginIdManager } from "../hooks/useLoginIdManager";
+import { useLoginManager } from "../hooks/useLoginManager";
 
-function LoginIdForm() {
+function LoginForm() {
   const {
     texts,
     locales,
     captcha,
-    countryCode,
-    countryPrefix,
     resetPasswordLink,
     isCaptchaAvailable,
-    isPasskeyEnabled,
-    showPasskeyAutofill,
-    handleLoginId,
-    handlePickCountryCode,
-  } = useLoginIdManager();
+    handleLogin,
+  } = useLoginManager();
 
   const activeIdentifiers = useLoginIdentifiers();
-
   const identifierDetails = getIdentifierDetails(
     (activeIdentifiers || undefined) as IdentifierType[] | undefined,
     texts
@@ -58,6 +43,7 @@ function LoginIdForm() {
   const form = useForm<LoginOptions>({
     defaultValues: {
       username: "",
+      password: "",
       captcha: "",
     },
     reValidateMode: "onBlur",
@@ -69,8 +55,7 @@ function LoginIdForm() {
 
   const captchaLabel = texts?.captchaCodePlaceholder
     ? `${texts.captchaCodePlaceholder}*`
-    : locales?.loginIdForm?.captchaLabel;
-  const forgotPasswordLinkText = LOGIN_PAGE_COPY.forgotPassword;
+    : locales?.loginForm?.captchaLabel;
   const forgotPasswordHref = resetPasswordLink || FORGOT_PASSWORD_FALLBACK_URL;
 
   const { captchaConfig, captchaProps, captchaValue } = useCaptcha(
@@ -78,27 +63,18 @@ function LoginIdForm() {
     captchaLabel
   );
 
-  if (isPasskeyEnabled && showPasskeyAutofill) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    usePasskeyAutofill();
-  }
-
   const { errors, hasError } = useErrors();
-
   const usernameSDKError = errors.byField("username")[0]?.message;
+  const passwordSDKError = errors.byField("password")[0]?.message;
   const captchaSDKError = errors.byField("captcha")[0]?.message;
-
   const generalErrors: ErrorItem[] = errors
     .byType("auth0")
     .filter((err) => !err.field);
 
-  const shouldShowCountryPicker = isPhoneNumberSupported(
-    activeIdentifiers || []
-  );
-
   const onSubmit = async (data: LoginOptions) => {
-    await handleLoginId({
+    await handleLogin({
       username: data.username,
+      password: data.password,
       captcha: isCaptchaAvailable && captchaValue ? captchaValue : undefined,
     });
   };
@@ -118,20 +94,6 @@ function LoginIdForm() {
                 generalErrors[0]?.message || locales?.errors?.errorOccurred
               }
             />
-          )}
-
-          {shouldShowCountryPicker && (
-            <div className="mb-4">
-              <ULThemeCountryCodePicker
-                selectedCountry={transformAuth0CountryCode(
-                  countryCode,
-                  countryPrefix
-                )}
-                onClick={handlePickCountryCode}
-                fullWidth
-                placeholder={locales?.loginIdForm?.selectCountryPlaceholder}
-              />
-            </div>
           )}
 
           <FormField
@@ -164,6 +126,35 @@ function LoginIdForm() {
             )}
           />
 
+          <FormField
+            control={form.control}
+            name="password"
+            rules={{
+              required: locales?.errors?.passwordRequired,
+            }}
+            render={({ field, fieldState }) => (
+              <FormItem className="mb-4">
+                <PillField
+                  {...field}
+                  id="password"
+                  label={LOGIN_PAGE_COPY.passwordLabel}
+                  type="password"
+                  autoComplete="current-password"
+                  error={!!fieldState.error || !!passwordSDKError}
+                  trailing={
+                    <PillFieldLink href={forgotPasswordHref}>
+                      {LOGIN_PAGE_COPY.forgotPassword}
+                    </PillFieldLink>
+                  }
+                />
+                <ULThemeFormMessage
+                  sdkError={passwordSDKError}
+                  hasFormError={!!fieldState.error}
+                />
+              </FormItem>
+            )}
+          />
+
           {isCaptchaAvailable && captchaConfig && (
             <Captcha
               control={form.control}
@@ -179,17 +170,9 @@ function LoginIdForm() {
         </div>
 
         <LoginSubmitButton loading={isSubmitting} />
-
-        {forgotPasswordHref && (
-          <div className="mt-3 text-center login:text-left">
-            <PillFieldLink href={forgotPasswordHref}>
-              {forgotPasswordLinkText}
-            </PillFieldLink>
-          </div>
-        )}
       </form>
     </Form>
   );
 }
 
-export default LoginIdForm;
+export default LoginForm;

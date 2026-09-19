@@ -91,7 +91,7 @@ try {
       if (stat.isDirectory()) {
         files.push(...findFiles(fullPath, extension));
       } else if (item.endsWith(extension)) {
-        files.push(path.relative(distDir, fullPath));
+        files.push(path.relative(distDir, fullPath).replace(/\\/g, "/"));
       }
     }
 

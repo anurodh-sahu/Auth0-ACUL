@@ -1,0 +1,19 @@
+{
+    "page": {
+        "title": "Login",
+        "orText": "OR"
+    },
+    "heading": {
+        "logoAltText": "Brand Logo"
+    },
+    "loginForm": {
+        "selectCountryPlaceholder": "Select Country",
+        "captchaLabel": "Enter the code shown above*"
+    },
+    "errors": {
+        "errorOccurred": "An error occurred",
+        "identifierRequired": "Please enter your Login ID.",
+        "passwordRequired": "Please enter your password.",
+        "captchaCompletionRequired": "Please complete the CAPTCHA"
+    }
+}

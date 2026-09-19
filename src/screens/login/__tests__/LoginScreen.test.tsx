@@ -4,43 +4,32 @@ import {
   useLoginIdentifiers,
   useScreen,
   useTransaction,
-} from "@auth0/auth0-acul-react/login-id";
+} from "@auth0/auth0-acul-react/login";
 import { act, render, screen } from "@testing-library/react";
 
 import { useCaptcha } from "@/hooks/useCaptcha";
 import { CommonTestData } from "@/test/fixtures/common-data";
 import { ScreenTestUtils } from "@/test/utils/screen-test-utils";
-import { extractTokenValue } from "@/utils/helpers/tokenUtils";
 
-import LoginIdScreen from "../index";
+import LoginScreen from "../index";
 
-jest.mock("@/utils/helpers/tokenUtils", () => ({
-  extractTokenValue: jest.fn(),
-}));
-
+jest.mock("@auth0/auth0-acul-react/login");
 jest.mock("@/hooks/useCaptcha", () => ({
   useCaptcha: jest.fn(),
 }));
 
-describe("LoginIdScreen", () => {
+describe("LoginScreen", () => {
   const renderScreen = async () => {
     await act(async () => {
-      render(<LoginIdScreen />);
+      render(<LoginScreen />);
     });
     await screen.findByRole("heading", { name: /welcome to your/i });
   };
-  const mockExtractTokenValue = extractTokenValue as jest.Mock;
 
   beforeEach(() => {
     jest.clearAllMocks();
-    mockExtractTokenValue.mockReset();
-  });
-
-  beforeEach(() => {
     (useLoginIdentifiers as jest.Mock).mockReturnValue([
-      { type: "phone", required: true },
-      { type: "email", required: false },
-      { type: "username", required: false },
+      { type: "username", required: true },
     ]);
     const mockedUseCaptcha = useCaptcha as jest.Mock;
     mockedUseCaptcha.mockReturnValue({
@@ -54,19 +43,21 @@ describe("LoginIdScreen", () => {
     });
   });
 
-  it("should render login-id screen with classic form elements", async () => {
+  it("should render the classic login layout", async () => {
     await renderScreen();
 
     expect(
       screen.getByRole("heading", { name: /portfolio performance/i })
     ).toBeInTheDocument();
     expect(screen.getByLabelText("Login ID")).toBeInTheDocument();
+    expect(screen.getByLabelText("Password")).toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: "Forgot Login ID?" })
     ).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /^login$/i })
+      screen.getByRole("link", { name: "Forgot Password?" })
     ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /^login$/i })).toBeInTheDocument();
   });
 
   it("should set document title from screen data", async () => {
@@ -74,62 +65,18 @@ describe("LoginIdScreen", () => {
     expect(document.title).toBe("Log in | my app");
   });
 
-  it("should render social login buttons", async () => {
-    mockExtractTokenValue.mockReturnValue("top");
-    await renderScreen();
-
-    expect(
-      screen.getByTestId("social-provider-button-google")
-    ).toBeInTheDocument();
-    expect(
-      screen.getByTestId("social-provider-button-hugging-face")
-    ).toBeInTheDocument();
-    expect(
-      screen.getByTestId("social-provider-button-didit")
-    ).toBeInTheDocument();
-  });
-
-  it("should render login with passkey when enabled", async () => {
-    mockExtractTokenValue.mockReturnValue("top");
-    (useTransaction as jest.Mock).mockReturnValue({
-      ...(useTransaction as jest.Mock)(),
-      isPasskeyEnabled: true,
-    });
-    await renderScreen();
-
-    const passkeyButton = screen.getByRole("button", {
-      name: /continue with a passkey/i,
-    });
-    expect(passkeyButton).toBeInTheDocument();
-  });
-
-  it("should render username/email field as Login ID", async () => {
-    await renderScreen();
-
-    const usernameField = screen.getByLabelText("Login ID");
-    expect(usernameField).toBeInTheDocument();
-    expect(usernameField).not.toBeDisabled();
-  });
-
-  it("should render captcha when available", async () => {
-    const mockScreen = (useScreen as jest.Mock)();
-    mockScreen.isCaptchaAvailable = true;
-    await renderScreen();
-
-    expect(screen.getByAltText("CAPTCHA challenge")).toBeInTheDocument();
-  });
-
-  it("should submit form and call login with credentials", async () => {
+  it("should submit username and password together", async () => {
     await renderScreen();
 
     await ScreenTestUtils.fillInput("Login ID", "test@example.com");
+    await ScreenTestUtils.fillInput("Password", "secret-password");
     await ScreenTestUtils.fillInput("CAPTCHA", "mock-value");
-
     await ScreenTestUtils.clickButton(/^login$/i);
 
     expect(login).toHaveBeenCalledWith(
       expect.objectContaining({
         username: "test@example.com",
+        password: "secret-password",
         captcha: "mock-value",
       })
     );

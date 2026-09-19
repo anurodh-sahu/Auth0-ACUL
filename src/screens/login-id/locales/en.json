@@ -26,8 +26,8 @@
     },
     "errors": {
         "errorOccurred": "An error occurred",
-        "identifierRequired": "Identifier is required",
-        "passwordRequired": "Password is required",
+        "identifierRequired": "Please enter your Login ID.",
+        "passwordRequired": "Please enter your password.",
         "captchaCompletionRequired": "Please complete the CAPTCHA"
     }
 }

@@ -37,7 +37,7 @@ export default function DevScreenManager() {
 
   return (
     <>
-      <UniversalLoginContextPanel />
+      <UniversalLoginContextPanel defaultScreen="login:login" />
       {renderContent()}
     </>
   );
