@@ -3,20 +3,35 @@
   "prompt": "login",
   "screen": "login",
   "rendering_mode": "advanced",
-  "context_configuration": [],
+  "context_configuration": [
+    "screen.texts",
+    "branding.themes.default",
+    "branding.settings",
+    "client.logo_uri",
+    "tenant.enabled_locales",
+    "untrusted_data.submitted_form_data"
+  ],
   "default_head_tags_disabled": false,
   "head_tags": [
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/shared/react-vendor.Bslw2Lok.js",
+        "src": "http://localhost:3000/assets/shared/common.Nu8Gt7Hd.js",
         "type": "module"
       },
       "tag": "script"
     },
     {
       "attributes": {
-        "href": "http://localhost:3000/assets/shared/style.om8aacwz.css",
+        "defer": true,
+        "src": "http://localhost:3000/assets/shared/react-vendor.B1tQtnDa.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "href": "http://localhost:3000/assets/shared/style.CihHqcKU.css",
         "rel": "stylesheet"
       },
       "tag": "link"
@@ -24,7 +39,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/shared/vendor.bFt7wJ98.js",
+        "src": "http://localhost:3000/assets/shared/vendor.DOwSvfgn.js",
         "type": "module"
       },
       "tag": "script"
@@ -32,7 +47,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/login/index.UgqeFmg6.js",
+        "src": "http://localhost:3000/assets/login/index.GulPPAFM.js",
         "type": "module"
       },
       "tag": "script"
@@ -40,7 +55,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/main.qDbMarmy.js",
+        "src": "http://localhost:3000/assets/main.DFee7kv1.js",
         "type": "module"
       },
       "tag": "script"

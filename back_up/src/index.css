@@ -208,7 +208,7 @@ Created to support alignment related utlities like justify, text-align etc with 
 
   /* Widget */
   --ul-theme-widget-logo-position: center;
-  --ul-theme-widget-logo-url: "https://k8s-ambitshareddevelo-cd0fc7bcc9-1697435033.ap-south-1.elb.amazonaws.com:1337/uploads/logo_1b55987306.png";
+  --ul-theme-widget-logo-url: "";
   --ul-theme-widget-logo-height: 52px;
   --ul-theme-widget-header-text-alignment: center;
   --ul-theme-widget-social-buttons-layout: bottom;

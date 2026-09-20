@@ -9,7 +9,6 @@ import {
 
 export interface LoginPageVisuals {
   backgroundImage: string;
-  logo: string;
   desktopTree: string;
   mobileTree: string;
   quote: string;
@@ -18,7 +17,6 @@ export interface LoginPageVisuals {
 
 const EMPTY_VISUALS: LoginPageVisuals = {
   backgroundImage: "",
-  logo: "",
   desktopTree: "",
   mobileTree: "",
   quote: "",
@@ -54,7 +52,6 @@ export function useLoginPageAssets(): LoginPageVisuals {
 
         setVisuals({
           backgroundImage: getAssetUrl(loginPage.background_image),
-          logo: getAssetUrl(loginPage.logo),
           desktopTree: getAssetUrl(loginPage.desktop_tree_image),
           mobileTree: getAssetUrl(loginPage.small_tree_image),
           quote: selectedQuote?.quote?.trim() || "",

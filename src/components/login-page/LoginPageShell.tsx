@@ -44,11 +44,10 @@ function LoginPageShell({
   children,
   logoAlt = "Brand Logo",
 }: LoginPageShellProps) {
-  const { backgroundImage, logo, desktopTree, mobileTree, quote, writer } =
+  const { backgroundImage, desktopTree, mobileTree, quote, writer } =
     useLoginPageAssets();
 
-  const fallbackLogo = extractTokenValue("--ul-theme-widget-logo-url");
-  const logoSrc = logo || fallbackLogo;
+  const logoSrc = extractTokenValue("--ul-theme-widget-logo-url");
 
   const shellStyle: CSSProperties | undefined = backgroundImage
     ? { backgroundImage: `url('${backgroundImage}')` }
