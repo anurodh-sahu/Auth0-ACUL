@@ -1,0 +1,50 @@
+{
+  "tenant": "ambit-poc",
+  "prompt": "login",
+  "screen": "login",
+  "rendering_mode": "advanced",
+  "context_configuration": [],
+  "default_head_tags_disabled": false,
+  "head_tags": [
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/shared/react-vendor.Bslw2Lok.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "href": "http://localhost:3000/assets/shared/style.om8aacwz.css",
+        "rel": "stylesheet"
+      },
+      "tag": "link"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/shared/vendor.bFt7wJ98.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/login/index.UgqeFmg6.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/main.qDbMarmy.js",
+        "type": "module"
+      },
+      "tag": "script"
+    }
+  ],
+  "use_page_template": false
+}

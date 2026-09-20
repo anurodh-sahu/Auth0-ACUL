@@ -2,10 +2,12 @@
   "chosen_template": "react",
   "screens": [
     "login-id",
-    "login"
+    "login",
+    "mfa-sms-challenge",
+    "mfa-otp-challenge"
   ],
   "created_at": "2026-09-18T18:02:34Z",
-  "modified_at": "2026-09-18T18:02:34Z",
+  "modified_at": "2026-09-19T17:30:00Z",
   "app_version": "v3.0.0",
   "acul_manifest_version": "1.0.0"
 }

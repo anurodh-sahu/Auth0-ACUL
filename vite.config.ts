@@ -89,16 +89,33 @@ export default defineConfig({
         },
 
         manualChunks: (id) => {
+          // Keep each screen entry self-contained enough that Auth0 head_tags
+          // for one screen do not depend on another screen's entry chunk.
           if (!id.includes("node_modules")) {
-            const absoluteId = resolve(id);
-            const absoluteSrcScreensDir = resolve(__dirname, "src/screens");
+            const absoluteId = resolve(id).replace(/\\/g, "/");
+            const screensRoot = resolve(__dirname, "src/screens").replace(
+              /\\/g,
+              "/"
+            );
 
+            // Keep app bootstrap in the main entry (not shared/common).
+            // Otherwise Auth0 can load scripts without ever calling initializeApp.
             if (
-              absoluteId.includes(resolve(__dirname, "src/")) &&
-              !absoluteId.startsWith(absoluteSrcScreensDir + "/")
+              absoluteId.endsWith("/src/main.tsx") ||
+              absoluteId.endsWith("/src/App.tsx")
+            ) {
+              return undefined;
+            }
+
+            // Shared app code (not screen-specific) → shared/common chunk
+            if (
+              absoluteId.includes("/src/") &&
+              !absoluteId.startsWith(screensRoot + "/")
             ) {
               return "common";
             }
+
+            // Do not manually chunk screen modules — leave them with their entry
             return undefined;
           }
 
@@ -106,7 +123,7 @@ export default defineConfig({
           if (
             id.includes("/node_modules/react/") ||
             id.includes("/node_modules/react-dom/") ||
-            id.includes("/node_modules/scheduler/")  // Keep React's internals together
+            id.includes("/node_modules/scheduler/") // Keep React's internals together
           ) {
             return "react-vendor";
           }
@@ -115,6 +132,8 @@ export default defineConfig({
           return "vendor";
         },
       },
+      // Prevent Rollup from collapsing main/bootstrap into a screen entry chunk
+      preserveEntrySignatures: "strict",
     },
     minify: true,
     emptyOutDir: true,

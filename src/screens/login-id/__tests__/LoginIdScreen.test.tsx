@@ -27,7 +27,7 @@ describe("LoginIdScreen", () => {
     await act(async () => {
       render(<LoginIdScreen />);
     });
-    await screen.findByRole("heading", { name: /welcome to your/i });
+    await screen.findByRole("heading", { name: /welcome/i });
   };
   const mockExtractTokenValue = extractTokenValue as jest.Mock;
 
@@ -57,9 +57,7 @@ describe("LoginIdScreen", () => {
   it("should render login-id screen with classic form elements", async () => {
     await renderScreen();
 
-    expect(
-      screen.getByRole("heading", { name: /portfolio performance/i })
-    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /welcome/i })).toBeInTheDocument();
     expect(screen.getByLabelText("Login ID")).toBeInTheDocument();
     expect(
       screen.getByRole("link", { name: "Forgot Login ID?" })

@@ -15,22 +15,6 @@
           "variants": ["default", "with-errors"]
         }
       }
-    },
-    {
-      "mfa-sms": {
-        "mfa-sms-challenge": {
-          "path": "/screens/mfa-sms/mfa-sms-challenge",
-          "variants": ["default"]
-        }
-      }
-    },
-    {
-      "mfa-otp": {
-        "mfa-otp-challenge": {
-          "path": "/screens/mfa-otp/mfa-otp-challenge",
-          "variants": ["default"]
-        }
-      }
     }
   ]
 }

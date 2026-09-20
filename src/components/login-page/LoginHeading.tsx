@@ -1,13 +1,12 @@
-import { LOGIN_PAGE_COPY } from "@/constants/loginPage";
+interface LoginHeadingProps {
+  title: string;
+  description?: string;
+}
 
-function LoginHeading() {
+function LoginHeading({ title }: LoginHeadingProps) {
   return (
     <h1 className="mb-3 font-normal text-xl leading-7 tracking-normal text-[#020618] text-center login:text-left">
-      {LOGIN_PAGE_COPY.headingLine1}
-      <br />
-      {LOGIN_PAGE_COPY.headingLine2}
-      <br />
-      {LOGIN_PAGE_COPY.headingLine3}
+      {title}
     </h1>
   );
 }

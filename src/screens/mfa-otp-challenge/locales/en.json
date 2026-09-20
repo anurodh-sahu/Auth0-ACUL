@@ -1,0 +1,24 @@
+{
+  "page": {
+    "title": "Verify Your Identity - MFA"
+  },
+  "header": {
+    "logoAlt": "Brand Logo",
+    "title": "Verify Your Identity",
+    "description": "Enter the code from your authenticator app"
+  },
+  "form": {
+    "fields": {
+      "code": {
+        "label": "Enter the 6-digit code",
+        "required": "Please enter the verification code."
+      }
+    },
+    "button": "Continue",
+    "buttonSubmitting": "Verifying...",
+    "rememberDevice": "Remember this device for 30 days"
+  },
+  "footer": {
+    "tryAnother": "Try another method"
+  }
+}

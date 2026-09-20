@@ -8,9 +8,6 @@ export const FORGOT_LOGIN_ID_URL = `${LOGIN_ASSETS_BASE_URL}:8083/forget-userId?
 export const FORGOT_PASSWORD_FALLBACK_URL = `${LOGIN_ASSETS_BASE_URL}:8083/forget-password?redirect_url=${LOGIN_ASSETS_BASE_URL}:8081/login`;
 
 export const LOGIN_PAGE_COPY = {
-  headingLine1: "Welcome to your",
-  headingLine2: "portfolio performance",
-  headingLine3: "investment insights",
   loginIdLabel: "Login ID",
   passwordLabel: "Password",
   forgotLoginId: "Forgot Login ID?",

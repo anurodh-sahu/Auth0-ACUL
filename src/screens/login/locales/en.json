@@ -4,6 +4,8 @@
         "orText": "OR"
     },
     "heading": {
+        "title": "Welcome",
+        "description": "",
         "logoAltText": "Brand Logo"
     },
     "loginForm": {

@@ -1,0 +1,20 @@
+﻿{
+  "client": { "id": "client", "name": "App" },
+  "prompt": { "name": "mfa-otp" },
+  "screen": {
+    "name": "mfa-otp-challenge",
+    "data": { "show_remember_device": true },
+    "texts": {
+      "title": "Verify Your Identity",
+      "description": "OTP sent to your mobile number",
+      "pageTitle": "Verify Your Identity - MFA",
+      "buttonText": "Continue",
+      "placeholder": "Enter the 6-digit code",
+      "rememberMeText": "Remember this device for 30 days",
+      "logoAltText": "Brand Logo",
+      "pickAuthenticatorText": "Try another method"
+    }
+  },
+  "transaction": { "state": "state" },
+  "tenant": { "friendly_name": "Ambit" }
+}

@@ -110,7 +110,10 @@ function LoginIdForm() {
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <div>
-          <LoginHeading />
+          <LoginHeading
+            title={texts?.title || locales.heading.title}
+            description={texts?.description || locales.heading.description}
+          />
 
           {hasError && generalErrors.length > 0 && (
             <LoginErrorBanner

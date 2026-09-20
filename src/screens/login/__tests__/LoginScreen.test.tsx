@@ -23,7 +23,7 @@ describe("LoginScreen", () => {
     await act(async () => {
       render(<LoginScreen />);
     });
-    await screen.findByRole("heading", { name: /welcome to your/i });
+    await screen.findByRole("heading", { name: /welcome/i });
   };
 
   beforeEach(() => {
@@ -47,7 +47,7 @@ describe("LoginScreen", () => {
     await renderScreen();
 
     expect(
-      screen.getByRole("heading", { name: /portfolio performance/i })
+      screen.getByRole("heading", { name: /welcome/i })
     ).toBeInTheDocument();
     expect(screen.getByLabelText("Login ID")).toBeInTheDocument();
     expect(screen.getByLabelText("Password")).toBeInTheDocument();

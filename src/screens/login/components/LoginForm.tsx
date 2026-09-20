@@ -1,10 +1,7 @@
 import { useForm } from "react-hook-form";
 
 import type { LoginOptions } from "@auth0/auth0-acul-js/login";
-import {
-  useErrors,
-  useLoginIdentifiers,
-} from "@auth0/auth0-acul-react/login";
+import { useErrors, useLoginIdentifiers } from "@auth0/auth0-acul-react/login";
 import type { ErrorItem, IdentifierType } from "@auth0/auth0-acul-react/types";
 
 import Captcha from "@/components/Captcha/index";
@@ -86,7 +83,10 @@ function LoginForm() {
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <div>
-          <LoginHeading />
+          <LoginHeading
+            title={texts?.title || locales.heading.title}
+            description={texts?.description || locales.heading.description}
+          />
 
           {hasError && generalErrors.length > 0 && (
             <LoginErrorBanner
