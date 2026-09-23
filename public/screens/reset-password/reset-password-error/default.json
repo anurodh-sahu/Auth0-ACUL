@@ -1,0 +1,15 @@
+{
+  "client": { "id": "client", "name": "App" },
+  "prompt": { "name": "reset-password" },
+  "screen": {
+    "name": "reset-password-error",
+    "texts": {
+      "eventTitle": "Please Try Again",
+      "description": "Something went wrong. Please return to the login page and select Forgot Your Password to try again.",
+      "pageTitle": "Password reset error",
+      "logoAltText": "Brand Logo"
+    }
+  },
+  "transaction": { "state": "state" },
+  "tenant": { "friendly_name": "Ambit" }
+}

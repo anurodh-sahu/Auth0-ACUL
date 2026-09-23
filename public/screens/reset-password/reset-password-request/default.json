@@ -1,0 +1,17 @@
+{
+  "client": { "id": "client", "name": "App" },
+  "prompt": { "name": "reset-password" },
+  "screen": {
+    "name": "reset-password-request",
+    "texts": {
+      "title": "Forgot Your Password?",
+      "pageTitle": "Reset your password",
+      "buttonText": "Continue",
+      "backToLoginLinkText": "Back to login",
+      "usernameOrEmailPlaceholder": "Username or Email address",
+      "logoAltText": "Brand Logo"
+    }
+  },
+  "transaction": { "state": "state" },
+  "tenant": { "friendly_name": "Ambit" }
+}

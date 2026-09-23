@@ -1,0 +1,17 @@
+{
+  "page": {
+    "title": "Check your email"
+  },
+  "header": {
+    "logoAlt": "Brand Logo",
+    "title": "Check Your Email",
+    "description": "Please check the email address {{email}} for instructions to reset your password."
+  },
+  "form": {
+    "button": "Resend email",
+    "buttonSubmitting": "Sending..."
+  },
+  "errors": {
+    "errorOccurred": "An error occurred"
+  }
+}

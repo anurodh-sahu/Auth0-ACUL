@@ -31,6 +31,30 @@
           "variants": ["default"]
         }
       }
+    },
+    {
+      "reset-password": {
+        "reset-password": {
+          "path": "/screens/reset-password/reset-password",
+          "variants": ["default"]
+        },
+        "reset-password-email": {
+          "path": "/screens/reset-password/reset-password-email",
+          "variants": ["default"]
+        },
+        "reset-password-error": {
+          "path": "/screens/reset-password/reset-password-error",
+          "variants": ["default"]
+        },
+        "reset-password-request": {
+          "path": "/screens/reset-password/reset-password-request",
+          "variants": ["default"]
+        },
+        "reset-password-success": {
+          "path": "/screens/reset-password/reset-password-success",
+          "variants": ["default"]
+        }
+      }
     }
   ]
 }

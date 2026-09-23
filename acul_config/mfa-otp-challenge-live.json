@@ -1,7 +1,7 @@
 {
   "tenant": "ambit-poc",
-  "prompt": "login",
-  "screen": "login",
+  "prompt": "mfa-otp",
+  "screen": "mfa-otp-challenge",
   "rendering_mode": "advanced",
   "context_configuration": [
     "screen.texts",
@@ -16,7 +16,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/shared/common.6XsmqhMd.js",
+        "src": "http://localhost:3000/assets/shared/common.KN8ZXyd8.js",
         "type": "module"
       },
       "tag": "script"
@@ -39,7 +39,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/shared/vendor.Ciygta_6.js",
+        "src": "http://localhost:3000/assets/shared/vendor.VqAnRU4p.js",
         "type": "module"
       },
       "tag": "script"
@@ -47,7 +47,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/login/index.DUWSz7GW.js",
+        "src": "http://localhost:3000/assets/mfa-otp-challenge/index.aYQWundD.js",
         "type": "module"
       },
       "tag": "script"
@@ -55,7 +55,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/main.CCi4_QbM.js",
+        "src": "http://localhost:3000/assets/main.DPQERFoH.js",
         "type": "module"
       },
       "tag": "script"

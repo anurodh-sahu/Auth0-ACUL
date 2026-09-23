@@ -1,0 +1,20 @@
+{
+  "client": { "id": "client", "name": "App" },
+  "prompt": { "name": "reset-password" },
+  "screen": {
+    "name": "reset-password",
+    "data": { "username": "test@example.com" },
+    "texts": {
+      "title": "Change Your Password",
+      "description": "Enter a new password below to change your password.",
+      "pageTitle": "Reset your password",
+      "buttonText": "Reset password",
+      "passwordPlaceholder": "New password",
+      "reEnterpasswordPlaceholder": "Re-enter new password",
+      "passwordSecurityText": "Your password must contain:",
+      "logoAltText": "Brand Logo"
+    }
+  },
+  "transaction": { "state": "state" },
+  "tenant": { "friendly_name": "Ambit" }
+}

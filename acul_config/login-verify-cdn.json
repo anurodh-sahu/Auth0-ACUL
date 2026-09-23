@@ -16,7 +16,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/shared/common.6XsmqhMd.js",
+        "src": "https://acul.innodeed.com/assets/shared/common.6XsmqhMd.js",
         "type": "module"
       },
       "tag": "script"
@@ -24,14 +24,14 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/shared/react-vendor.B1tQtnDa.js",
+        "src": "https://acul.innodeed.com/assets/shared/react-vendor.B1tQtnDa.js",
         "type": "module"
       },
       "tag": "script"
     },
     {
       "attributes": {
-        "href": "http://localhost:3000/assets/shared/style.C5nkI4rf.css",
+        "href": "https://acul.innodeed.com/assets/shared/style.C5nkI4rf.css",
         "rel": "stylesheet"
       },
       "tag": "link"
@@ -39,7 +39,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/shared/vendor.Ciygta_6.js",
+        "src": "https://acul.innodeed.com/assets/shared/vendor.Ciygta_6.js",
         "type": "module"
       },
       "tag": "script"
@@ -47,7 +47,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/login/index.DUWSz7GW.js",
+        "src": "https://acul.innodeed.com/assets/login/index.DUWSz7GW.js",
         "type": "module"
       },
       "tag": "script"
@@ -55,7 +55,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/main.CCi4_QbM.js",
+        "src": "https://acul.innodeed.com/assets/main.CCi4_QbM.js",
         "type": "module"
       },
       "tag": "script"

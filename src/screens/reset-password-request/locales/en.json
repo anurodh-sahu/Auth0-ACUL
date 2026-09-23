@@ -1,0 +1,23 @@
+{
+  "pageTitle": "Reset your password",
+  "header": {
+    "logoAlt": "Application Logo",
+    "title": "Forgot Your Password?"
+  },
+  "form": {
+    "fields": {
+      "captcha": {
+        "label": "CAPTCHA",
+        "required": "Please complete the CAPTCHA"
+      }
+    },
+    "button": "Continue",
+    "submittingState": "Verifying"
+  },
+  "footer": {
+    "backButton": "Back to My App"
+  },
+  "errors": {
+    "errorOccurred": "An error occurred"
+  }
+}

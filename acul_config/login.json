@@ -1,8 +1,8 @@
 {
+    "use_page_template":  false,
     "tenant":  "ambit-poc",
     "prompt":  "login",
-    "screen":  "login",
-    "rendering_mode":  "advanced",
+    "default_head_tags_disabled":  false,
     "context_configuration":  [
                                   "screen.texts",
                                   "branding.themes.default",
@@ -11,55 +11,55 @@
                                   "tenant.enabled_locales",
                                   "untrusted_data.submitted_form_data"
                               ],
-    "default_head_tags_disabled":  false,
+    "rendering_mode":  "advanced",
     "head_tags":  [
                       {
+                          "tag":  "script",
                           "attributes":  {
                                              "defer":  true,
-                                             "src":  "http://localhost:3000/assets/shared/common.CQYEVkgn.js",
-                                             "type":  "module"
-                                         },
-                          "tag":  "script"
+                                             "type":  "module",
+                                             "src":  "https://acul.innodeed.com/assets/shared/common.6XsmqhMd.js"
+                                         }
                       },
                       {
+                          "tag":  "script",
                           "attributes":  {
                                              "defer":  true,
-                                             "src":  "http://localhost:3000/assets/shared/react-vendor.B1tQtnDa.js",
-                                             "type":  "module"
-                                         },
-                          "tag":  "script"
+                                             "type":  "module",
+                                             "src":  "https://acul.innodeed.com/assets/shared/react-vendor.B1tQtnDa.js"
+                                         }
                       },
                       {
+                          "tag":  "link",
                           "attributes":  {
-                                             "href":  "http://localhost:3000/assets/shared/style.CihHqcKU.css",
+                                             "href":  "https://acul.innodeed.com/assets/shared/style.C5nkI4rf.css",
                                              "rel":  "stylesheet"
-                                         },
-                          "tag":  "link"
+                                         }
                       },
                       {
+                          "tag":  "script",
                           "attributes":  {
                                              "defer":  true,
-                                             "src":  "http://localhost:3000/assets/shared/vendor.DOwSvfgn.js",
-                                             "type":  "module"
-                                         },
-                          "tag":  "script"
+                                             "type":  "module",
+                                             "src":  "https://acul.innodeed.com/assets/shared/vendor.Ciygta_6.js"
+                                         }
                       },
                       {
+                          "tag":  "script",
                           "attributes":  {
                                              "defer":  true,
-                                             "src":  "http://localhost:3000/assets/login/index.DYUfBP59.js",
-                                             "type":  "module"
-                                         },
-                          "tag":  "script"
+                                             "type":  "module",
+                                             "src":  "https://acul.innodeed.com/assets/login/index.DUWSz7GW.js"
+                                         }
                       },
                       {
+                          "tag":  "script",
                           "attributes":  {
                                              "defer":  true,
-                                             "src":  "http://localhost:3000/assets/main.BUb57eTL.js",
-                                             "type":  "module"
-                                         },
-                          "tag":  "script"
+                                             "type":  "module",
+                                             "src":  "https://acul.innodeed.com/assets/main.CCi4_QbM.js"
+                                         }
                       }
                   ],
-    "use_page_template":  false
+    "screen":  "login"
 }

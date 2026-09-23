@@ -1,0 +1,15 @@
+{
+  "client": { "id": "client", "name": "App" },
+  "prompt": { "name": "reset-password" },
+  "screen": {
+    "name": "reset-password-success",
+    "texts": {
+      "eventTitle": "Password Changed!",
+      "description": "Your password has been changed successfully.",
+      "pageTitle": "Password reset successful",
+      "logoAltText": "Brand Logo"
+    }
+  },
+  "transaction": { "state": "state" },
+  "tenant": { "friendly_name": "Ambit" }
+}

@@ -1,0 +1,17 @@
+{
+  "client": { "id": "client", "name": "App" },
+  "prompt": { "name": "reset-password" },
+  "screen": {
+    "name": "reset-password-email",
+    "data": { "username": "test@example.com" },
+    "texts": {
+      "title": "Check Your Email",
+      "description": "Please check the email address test@example.com for instructions to reset your password.",
+      "pageTitle": "Check your email",
+      "resendLinkText": "Resend email",
+      "logoAltText": "Brand Logo"
+    }
+  },
+  "transaction": { "state": "state" },
+  "tenant": { "friendly_name": "Ambit" }
+}
