@@ -1,6 +1,7 @@
 import LoginPageShell from "@/components/login-page/LoginPageShell";
 import { applyAuth0Theme } from "@/utils/theme/themeEngine";
 
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MfaOtpChallengeForm from "./components/MfaOtpChallengeForm";
 import { useMfaOtpChallengeManager } from "./hooks/useMfaOtpChallengeManager";
@@ -17,6 +18,7 @@ function MfaOtpChallengeScreen() {
     <LoginPageShell logoAlt={logoAltText}>
       <Header />
       <MfaOtpChallengeForm />
+      <Footer />
     </LoginPageShell>
   );
 }

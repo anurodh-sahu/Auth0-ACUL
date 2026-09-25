@@ -1,0 +1,76 @@
+{
+  "tenant": "ambit-poc",
+  "prompt": "login",
+  "screen": "login",
+  "rendering_mode": "advanced",
+  "context_configuration": [
+    "screen.texts",
+    "branding.themes.default",
+    "branding.settings",
+    "client.logo_uri",
+    "tenant.enabled_locales",
+    "untrusted_data.submitted_form_data"
+  ],
+  "default_head_tags_disabled": false,
+  "head_tags": [
+    {
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/shared/common.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/shared/react-vendor.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "href": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/shared/style.css",
+        "rel": "stylesheet"
+      },
+      "tag": "link"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/shared/vendor.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/login/index.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/main.js",
+        "type": "module"
+      },
+      "tag": "script"
+    }
+  ],
+  "filters": {
+    "match_type": "includes_any",
+    "clients": [
+      {
+        "id": "UKhlpX1TCscOa0wCEwxSvIjR90eR8XqP"
+      },
+      {
+        "id": "VUXoKVXROSRzoDS0KIfSgjBiavQ4MlXZ"
+      }
+    ]
+  },
+  "use_page_template": false
+}

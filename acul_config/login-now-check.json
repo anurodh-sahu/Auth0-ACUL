@@ -1,0 +1,76 @@
+{
+  "tenant": "ambit-poc",
+  "prompt": "login",
+  "screen": "login",
+  "rendering_mode": "advanced",
+  "context_configuration": [
+    "screen.texts",
+    "branding.themes.default",
+    "branding.settings",
+    "client.logo_uri",
+    "tenant.enabled_locales",
+    "untrusted_data.submitted_form_data"
+  ],
+  "default_head_tags_disabled": false,
+  "head_tags": [
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/shared/common.CUPyVTjh.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/shared/react-vendor.B1tQtnDa.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "href": "http://localhost:3000/assets/shared/style.Smq7K4xv.css",
+        "rel": "stylesheet"
+      },
+      "tag": "link"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/shared/vendor.Ciygta_6.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/login/index.KSFWCDxy.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/main.BzDRPDLZ.js",
+        "type": "module"
+      },
+      "tag": "script"
+    }
+  ],
+  "filters": {
+    "match_type": "includes_any",
+    "clients": [
+      {
+        "id": "UKhlpX1TCscOa0wCEwxSvIjR90eR8XqP"
+      },
+      {
+        "id": "rucj8GcPVfaX1nxJEKDqUupxwbt9JzQM"
+      }
+    ]
+  },
+  "use_page_template": false
+}

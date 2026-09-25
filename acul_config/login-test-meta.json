@@ -1,0 +1,37 @@
+{
+    "screen":  "login",
+    "use_page_template":  false,
+    "filters":  {
+                    "clients":  [
+                                    {
+                                        "id":  "rucj8GcPVfaX1nxJEKDqUupxwbt9JzQM"
+                                    },
+                                    {
+                                        "id":  "UKhlpX1TCscOa0wCEwxSvIjR90eR8XqP"
+                                    }
+                                ],
+                    "match_type":  "includes_any"
+                },
+    "default_head_tags_disabled":  false,
+    "head_tags":  [
+                      {
+                          "tag":  "script",
+                          "attributes":  {
+                                             "defer":  true,
+                                             "type":  "module",
+                                             "src":  "https://acul.innodeed.com/assets/{{ client.metadata.acul_brand }}/main.js"
+                                         }
+                      }
+                  ],
+    "rendering_mode":  "advanced",
+    "context_configuration":  [
+                                  "screen.texts",
+                                  "branding.themes.default",
+                                  "branding.settings",
+                                  "client.logo_uri",
+                                  "tenant.enabled_locales",
+                                  "untrusted_data.submitted_form_data"
+                              ],
+    "prompt":  "login",
+    "tenant":  "ambit-poc"
+}

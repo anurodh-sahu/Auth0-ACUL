@@ -1,14 +1,16 @@
 {
   "page": {
-    "title": "Check your email"
+    "title": "Forgot your password?"
   },
   "header": {
     "logoAlt": "Brand Logo",
-    "title": "Check Your Email",
-    "description": "Please check the email address {{email}} for instructions to reset your password."
+    "title": "Forgot your password?",
+    "sentTitle": "Reset link has been sent",
+    "description": "Please follow the link sent to your email {{email}} to reset your password. Please note the reset link is only valid for 15 mins."
   },
   "form": {
-    "button": "Resend email",
+    "button": "Done",
+    "resend": "Resend email",
     "buttonSubmitting": "Sending..."
   },
   "errors": {

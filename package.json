@@ -7,9 +7,12 @@
   "scripts": {
     "initialize": "npm install && npm run build",
     "build": "tsc && vite build --logLevel info",
+    "build:brands": "node ./scripts/build-brands.js",
     "build:local": "PORT=8080 node ./scripts/build-local.js",
     "build:watch": "vite build --watch",
     "dev": "vite dev",
+    "dev:client1": "node ./scripts/dev-brand.js client1",
+    "dev:client2": "node ./scripts/dev-brand.js client2",
     "preview": "vite preview",
     "preview:watch": "concurrently \"vite build --watch\" \"vite preview\"",
     "generate:screenLoader": "node ./scripts/generate-screen-loader.js",

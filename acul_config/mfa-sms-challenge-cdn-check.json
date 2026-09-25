@@ -1,0 +1,35 @@
+{
+  "tenant": "ambit-poc",
+  "prompt": "mfa-sms",
+  "screen": "mfa-sms-challenge",
+  "rendering_mode": "standard",
+  "context_configuration": [],
+  "default_head_tags_disabled": false,
+  "head_tags": [
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/shared/react-vendor.B1tQtnDa.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/mfa-sms-challenge/index.DdDXcwhf.js",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "http://localhost:3000/assets/main.Kz3s5qd3.js",
+        "type": "module"
+      },
+      "tag": "script"
+    }
+  ],
+  "use_page_template": false
+}

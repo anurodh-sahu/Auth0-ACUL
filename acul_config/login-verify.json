@@ -16,7 +16,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/shared/common.CQYEVkgn.js",
+        "src": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/shared/common.js",
         "type": "module"
       },
       "tag": "script"
@@ -24,14 +24,14 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/shared/react-vendor.B1tQtnDa.js",
+        "src": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/shared/react-vendor.js",
         "type": "module"
       },
       "tag": "script"
     },
     {
       "attributes": {
-        "href": "http://localhost:3000/assets/shared/style.CihHqcKU.css",
+        "href": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/shared/style.css",
         "rel": "stylesheet"
       },
       "tag": "link"
@@ -39,7 +39,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/shared/vendor.DOwSvfgn.js",
+        "src": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/shared/vendor.js",
         "type": "module"
       },
       "tag": "script"
@@ -47,7 +47,7 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/login/index.DYUfBP59.js",
+        "src": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/login/index.js",
         "type": "module"
       },
       "tag": "script"
@@ -55,11 +55,22 @@
     {
       "attributes": {
         "defer": true,
-        "src": "http://localhost:3000/assets/main.BUb57eTL.js",
+        "src": "https://acul.innodeed.com/assets/{{client.metadata.acul_brand}}/main.js",
         "type": "module"
       },
       "tag": "script"
     }
   ],
+  "filters": {
+    "match_type": "includes_any",
+    "clients": [
+      {
+        "id": "UKhlpX1TCscOa0wCEwxSvIjR90eR8XqP"
+      },
+      {
+        "id": "rucj8GcPVfaX1nxJEKDqUupxwbt9JzQM"
+      }
+    ]
+  },
   "use_page_template": false
 }

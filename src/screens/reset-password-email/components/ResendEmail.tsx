@@ -52,6 +52,7 @@ function ResendEmail() {
           loading={isSubmitting}
           label={buttonText.toUpperCase()}
           loadingLabel={buttonSubmittingText.toUpperCase()}
+          showAccentDot={false}
         />
       </form>
     </Form>

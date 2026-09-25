@@ -7,8 +7,10 @@
       "eventTitle": "Password Changed!",
       "description": "Your password has been changed successfully.",
       "pageTitle": "Password reset successful",
-      "logoAltText": "Brand Logo"
-    }
+      "logoAltText": "Brand Logo",
+      "buttonText": "Back to login"
+    },
+    "links": { "login": "/u/login" }
   },
   "transaction": { "state": "state" },
   "tenant": { "friendly_name": "Ambit" }

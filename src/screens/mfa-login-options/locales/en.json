@@ -1,0 +1,21 @@
+{
+    "pageTitle": "List of other login methods",
+    "header": {
+        "logoAlt": "Brand Logo",
+        "title": "Select a method to verify your identity",
+        "description": "Add another authentication method.",
+        "back": "Back"
+    },
+    "MFALoginOptions": {
+        "sms": "SMS",
+        "voice": "Phone",
+        "phone": "Phone",
+        "pushNotification": "Notification via Auth0 Guardian app",
+        "otp": "Google Authenticator or similar",
+        "webauthnRoaming": "Security Key",
+        "email": "Email",
+        "recoveryCode": "Recovery code",
+        "webauthnPlatform": "Fingerprint or Face Recognition",
+        "duo": "Notification via DUO app"
+    }
+}

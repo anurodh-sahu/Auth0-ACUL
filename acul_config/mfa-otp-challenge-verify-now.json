@@ -1,0 +1,65 @@
+{
+  "tenant": "ambit-poc",
+  "prompt": "mfa-otp",
+  "screen": "mfa-otp-challenge",
+  "rendering_mode": "advanced",
+  "context_configuration": [
+    "screen.texts",
+    "branding.themes.default",
+    "branding.settings",
+    "client.logo_uri",
+    "tenant.enabled_locales",
+    "untrusted_data.submitted_form_data"
+  ],
+  "default_head_tags_disabled": false,
+  "head_tags": [
+    {
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/client1/shared/common.js?v=20260925b",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/client1/shared/react-vendor.js?v=20260925b",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "href": "https://acul.innodeed.com/assets/client1/shared/style.css?v=20260925b",
+        "rel": "stylesheet"
+      },
+      "tag": "link"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/client1/shared/vendor.js?v=20260925b",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/client1/mfa-otp-challenge/index.js?v=20260925b",
+        "type": "module"
+      },
+      "tag": "script"
+    },
+    {
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/client1/main.js?v=20260925b",
+        "type": "module"
+      },
+      "tag": "script"
+    }
+  ],
+  "use_page_template": false
+}

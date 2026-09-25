@@ -29,6 +29,10 @@ describe("ResetPasswordSuccessScreen", () => {
     expect(
       screen.getByText(/Your password has been changed successfully/i)
     ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /back to login/i })).toHaveAttribute(
+      "href",
+      "/u/login"
+    );
   });
 
   it("sets correct document title from SDK", () => {
@@ -37,10 +41,15 @@ describe("ResetPasswordSuccessScreen", () => {
     expect(document.title).toBe("Password Reset Complete");
   });
 
-  it("sets fallback title when texts is missing", () => {
-    (useScreen as jest.Mock).mockReturnValueOnce({
+  it("hides back link when Auth0 does not provide back_to_app", () => {
+    (useScreen as jest.Mock).mockReturnValue({
       name: "reset-password-success",
-      texts: undefined,
+      texts: {
+        pageTitle: "Password Reset Complete",
+        eventTitle: "Password Changed!",
+        description: "Your password has been changed successfully.",
+        buttonText: "Back to Ambit",
+      },
       isCaptchaAvailable: false,
       captchaProvider: null,
       captchaSiteKey: null,
@@ -54,6 +63,11 @@ describe("ResetPasswordSuccessScreen", () => {
 
     render(<ResetPasswordSuccessScreen />);
 
-    expect(document.title).toBe("Password reset successful");
+    expect(
+      screen.queryByRole("link", { name: /back to/i })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /back to/i })
+    ).not.toBeInTheDocument();
   });
 });

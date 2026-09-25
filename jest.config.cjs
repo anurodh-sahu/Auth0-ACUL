@@ -16,6 +16,10 @@ module.exports = {
       "<rootDir>/src/__mocks__/@auth0/auth0-acul-react/reset-password-request.ts",
     "^@auth0/auth0-acul-react/reset-password-success$":
       "<rootDir>/src/__mocks__/@auth0/auth0-acul-react/reset-password-success.ts",
+    "^@auth0/auth0-acul-react/mfa-login-options$":
+      "<rootDir>/src/__mocks__/@auth0/auth0-acul-react/mfa-login-options.ts",
+    "^@auth0/auth0-acul-react/interstitial-captcha$":
+      "<rootDir>/src/__mocks__/@auth0/auth0-acul-react/interstitial-captcha.ts",
   },
   // Allow transforming ESM modules from node_modules.
   transformIgnorePatterns: [

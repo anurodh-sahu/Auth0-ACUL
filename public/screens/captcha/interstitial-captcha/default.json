@@ -1,0 +1,23 @@
+{
+  "client": { "id": "client", "name": "App" },
+  "prompt": { "name": "captcha" },
+  "screen": {
+    "name": "interstitial-captcha",
+    "isCaptchaAvailable": true,
+    "captchaProvider": "auth0",
+    "captcha": {
+      "provider": "auth0",
+      "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAiIGhlaWdodD0iNTAiPjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNlNWU3ZWIiLz48dGV4dCB4PSI3NSIgeT0iMzAiIGZvbnQtc2l6ZT0iMTQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMzMzMiPkFCQzEyMzwvdGV4dD48L3N2Zz4="
+    },
+    "texts": {
+      "title": "Verify you're human",
+      "description": "Complete the security check to continue.",
+      "pageTitle": "Security Check",
+      "buttonText": "Continue",
+      "captchaCodePlaceholder": "Enter the code shown above",
+      "logoAltText": "Brand Logo"
+    }
+  },
+  "transaction": { "state": "state" },
+  "tenant": { "friendly_name": "Ambit" }
+}

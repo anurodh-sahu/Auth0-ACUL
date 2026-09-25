@@ -12,12 +12,17 @@ import { executeSafely } from "@/utils/helpers/executeSafely";
 
 import locales from "../locales/en.json";
 
+type ScreenWithLinks = ScreenMembersOnResetPasswordEmail & {
+  links?: { login?: string } | null;
+  loginLink?: string | null;
+};
+
 export const useResetPasswordEmailManager = () => {
   const resetPasswordEmail: ResetPasswordEmailMembers =
     useResetPasswordEmail();
-  const screen: ScreenMembersOnResetPasswordEmail = useScreen();
+  const screen = useScreen() as ScreenWithLinks;
 
-  const { texts, data } = screen;
+  const { texts, data, links, loginLink } = screen;
 
   const handleResendEmail = async (): Promise<void> => {
     await executeSafely("Resend email for password reset", () =>
@@ -29,8 +34,12 @@ export const useResetPasswordEmailManager = () => {
     resetPasswordEmail,
     handleResendEmail,
     texts: (texts ||
-      {}) as NonNullable<ScreenMembersOnResetPasswordEmail["texts"]>,
+      {}) as NonNullable<ScreenMembersOnResetPasswordEmail["texts"]> & {
+      emailSentText?: string;
+      buttonText?: string;
+    },
     data,
     locales,
+    loginHref: loginLink || links?.login || undefined,
   };
 };

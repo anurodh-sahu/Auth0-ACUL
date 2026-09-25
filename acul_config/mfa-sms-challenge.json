@@ -1,0 +1,25 @@
+{
+  "tenant": "ambit-poc",
+  "prompt": "mfa-sms",
+  "screen": "mfa-sms-challenge",
+  "rendering_mode": "advanced",
+  "context_configuration": [
+    "screen.texts",
+    "branding.themes.default",
+    "branding.settings",
+    "client.logo_uri",
+    "tenant.enabled_locales",
+    "untrusted_data.submitted_form_data"
+  ],
+  "default_head_tags_disabled": false,
+  "head_tags": [
+    {
+      "tag": "script",
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/acul-loader.js?v=20260925d"
+      }
+    }
+  ],
+  "use_page_template": false
+}

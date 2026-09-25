@@ -1,0 +1,23 @@
+{
+  "client": { "id": "client", "name": "App" },
+  "prompt": { "name": "mfa-login-options" },
+  "screen": {
+    "name": "mfa-login-options",
+    "texts": {
+      "pageTitle": "Choose authentication method",
+      "title": "Choose an authentication method",
+      "description": "Add another authentication method.",
+      "logoAltText": "Brand Logo",
+      "backText": "Back",
+      "authenticatorNamesSMS": "SMS",
+      "authenticatorNamesOTP": "OTP App",
+      "authenticatorNamesWebauthnRoaming": "Security Key",
+      "authenticatorNamesEmail": "Email"
+    }
+  },
+  "user": {
+    "enrolled_factors": ["sms", "otp", "webauthn-roaming", "email"]
+  },
+  "transaction": { "state": "state" },
+  "tenant": { "friendly_name": "Ambit" }
+}

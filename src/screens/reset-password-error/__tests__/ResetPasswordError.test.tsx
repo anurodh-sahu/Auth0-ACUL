@@ -27,6 +27,10 @@ describe("ResetPasswordErrorScreen", () => {
 
     expect(screen.getByText(/An Error Occurred/i)).toBeInTheDocument();
     expect(screen.getByText(/Something went wrong/i)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /back to login/i })).toHaveAttribute(
+      "href",
+      "/u/login"
+    );
   });
 
   it("sets correct document title from SDK", () => {
@@ -35,10 +39,15 @@ describe("ResetPasswordErrorScreen", () => {
     expect(document.title).toBe("Password Reset Failed");
   });
 
-  it("sets fallback title when texts is missing", () => {
-    (useScreen as jest.Mock).mockReturnValueOnce({
+  it("hides back link when Auth0 does not provide back_to_app", () => {
+    (useScreen as jest.Mock).mockReturnValue({
       name: "reset-password-error",
-      texts: undefined,
+      texts: {
+        pageTitle: "Password Reset Failed",
+        eventTitle: "An Error Occurred",
+        description: "Something went wrong.",
+        backToLoginLinkText: "Back to Ambit",
+      },
       isCaptchaAvailable: false,
       captchaProvider: null,
       captchaSiteKey: null,
@@ -52,6 +61,11 @@ describe("ResetPasswordErrorScreen", () => {
 
     render(<ResetPasswordErrorScreen />);
 
-    expect(document.title).toBe("Password reset error");
+    expect(
+      screen.queryByRole("link", { name: /back to/i })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /back to/i })
+    ).not.toBeInTheDocument();
   });
 });

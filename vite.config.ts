@@ -23,10 +23,23 @@ if (fs.existsSync(screensDir)) {
   });
 }
 
+const aculBrand = (process.env.VITE_ACUL_BRAND || "").trim().toLowerCase();
+const isBrandBuild = aculBrand === "client1" || aculBrand === "client2";
+// Stable filenames so Auth0 Liquid {{client.metadata.acul_brand}} URLs work without hash churn.
+const useStableNames = isBrandBuild;
+// Brand builds upload to https://acul.innodeed.com/assets/{client1|client2}/...
+const brandAssetPrefix = isBrandBuild ? "" : "assets/";
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   base: "./", // Use './' for relative paths
+  // Force brand id into the client bundle (reliable on Windows brand builds).
+  define: isBrandBuild
+    ? {
+        "import.meta.env.VITE_ACUL_BRAND": JSON.stringify(aculBrand),
+      }
+    : undefined,
   server: {
     port: 3000,
     strictPort: true,
@@ -47,9 +60,12 @@ export default defineConfig({
       "@/lib": resolve(__dirname, "./src/lib"),
       "@/hooks": resolve(__dirname, "./src/hooks"),
       "@/test": resolve(__dirname, "./src/test"),
+      "@/brands": resolve(__dirname, "./src/brands"),
     },
   },
   build: {
+    outDir: isBrandBuild ? `dist-brands/${aculBrand}` : "dist",
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         ...screenEntries,
@@ -57,10 +73,16 @@ export default defineConfig({
       },
       output: {
         // Screen-specific entries
-        entryFileNames: (chunkInfo) =>
-          screenEntries[chunkInfo.name]
-            ? `assets/${chunkInfo.name}/index.[hash].js`
-            : "assets/main.[hash].js",
+        entryFileNames: (chunkInfo) => {
+          if (screenEntries[chunkInfo.name]) {
+            return useStableNames
+              ? `${brandAssetPrefix}${chunkInfo.name}/index.js`
+              : `assets/${chunkInfo.name}/index.[hash].js`;
+          }
+          return useStableNames
+            ? `${brandAssetPrefix}main.js`
+            : "assets/main.[hash].js";
+        },
 
         // Chunks naming strategy
         chunkFileNames: (chunkInfo) => {
@@ -72,20 +94,28 @@ export default defineConfig({
           );
 
           if (screenMatch) {
-            return `assets/${screenMatch}/chunk.[hash].js`;
+            return useStableNames
+              ? `${brandAssetPrefix}${screenMatch}/chunk.js`
+              : `assets/${screenMatch}/chunk.[hash].js`;
           }
 
           // For shared chunks, use a simplified naming scheme
-          return "assets/shared/[name].[hash].js";
+          return useStableNames
+            ? `${brandAssetPrefix}shared/[name].js`
+            : "assets/shared/[name].[hash].js";
         },
 
         // Assets naming (CSS, images, etc)
         assetFileNames: (assetInfo) => {
           const info = assetInfo.name || "";
           if (info.endsWith(".css")) {
-            return "assets/shared/style.[hash][extname]";
+            return useStableNames
+              ? `${brandAssetPrefix}shared/style.css`
+              : "assets/shared/style.[hash][extname]";
           }
-          return "assets/shared/[name].[hash][extname]";
+          return useStableNames
+            ? `${brandAssetPrefix}shared/[name][extname]`
+            : "assets/shared/[name].[hash][extname]";
         },
 
         manualChunks: (id) => {
@@ -136,7 +166,6 @@ export default defineConfig({
       preserveEntrySignatures: "strict",
     },
     minify: true,
-    emptyOutDir: true,
     cssCodeSplit: false, // Keep CSS in a single file
     sourcemap: true,
   },

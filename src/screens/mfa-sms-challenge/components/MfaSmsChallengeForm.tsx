@@ -6,25 +6,19 @@ import type {
   MfaSmsChallengeOptions,
 } from "@auth0/auth0-acul-react/types";
 
-import {
-  ULThemeFloatingLabelField,
-  ULThemeFormMessage,
-} from "@/components/form";
+import { ULThemeFormMessage } from "@/components/form/ULThemeFormMessage";
+import LoginErrorBanner from "@/components/login-page/LoginErrorBanner";
+import LoginSubmitButton from "@/components/login-page/LoginSubmitButton";
+import PillField from "@/components/login-page/PillField";
 import { Form, FormField, FormItem } from "@/components/ui/form";
-import { Label } from "@/components/ui/label";
-import { ULThemeButton } from "@/components/ULThemeButton";
-import { ULThemeCheckbox } from "@/components/ULThemeCheckbox";
-import { ULThemeAlert, ULThemeAlertTitle } from "@/components/ULThemeError";
 
 import { useMfaSmsChallengeManager } from "../hooks/useMfaSmsChallengeManager";
 
 function MfaSmsChallengeForm() {
   const { handleContinueMfaSmsChallenge, data, texts, locales } =
     useMfaSmsChallengeManager();
+  const { errors, hasError } = useErrors();
 
-  const { errors, hasError, dismiss } = useErrors();
-
-  // Initialize the form using react-hook-form
   const form = useForm<MfaSmsChallengeOptions>({
     defaultValues: {
       code: "",
@@ -37,113 +31,94 @@ function MfaSmsChallengeForm() {
   } = form;
 
   const buttonText = texts?.buttonText || locales.form.button;
+  const buttonSubmittingText =
+    texts?.buttonSubmitting || locales.form.buttonSubmitting;
   const codeLabelText = texts?.placeholder || locales.form.fields.code.label;
   const rememberDeviceText =
     texts?.rememberMeText || locales.form.rememberDevice;
 
-  // Get field-specific errors using SDK's errors helper
   const codeSDKError = errors.byField("code")[0]?.message;
-
-  // Get general errors (errors without a specific field)
   const generalErrors: ErrorItem[] = errors
     .byType("auth0")
     .filter((err) => !err.field);
 
-  const maskedPhoneNumber =
-    data?.phoneNumber || locales.form.fields.phoneNumber.fallback;
-  const phoneNumberLabel = locales.form.fields.phoneNumber.label;
-
   const onSubmit = async (formData: MfaSmsChallengeOptions) => {
-    await handleContinueMfaSmsChallenge(formData.code, formData.rememberDevice);
+    await handleContinueMfaSmsChallenge(
+      String(formData.code || ""),
+      !!formData.rememberDevice
+    );
   };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        {/* General error messages */}
-        {hasError && generalErrors.length > 0 && (
-          <div className="space-y-3 mb-4">
-            {generalErrors.map((error: ErrorItem) => (
-              <ULThemeAlert
-                key={error.id}
-                variant="destructive"
-                onDismiss={() => dismiss(error.id)}
-              >
-                <ULThemeAlertTitle>{error.message}</ULThemeAlertTitle>
-              </ULThemeAlert>
-            ))}
-          </div>
-        )}
-
-        {/* Disabled phone number display */}
-        <ULThemeFloatingLabelField
-          name="phoneNumber"
-          label={phoneNumberLabel}
-          value={maskedPhoneNumber}
-          disabled
-        />
-
-        {/* SMS Code input field */}
-        <FormField
-          control={form.control}
-          name="code"
-          rules={{
-            required: locales.form.fields.code.required,
-          }}
-          render={({ field, fieldState }) => (
-            <FormItem>
-              <ULThemeFloatingLabelField
-                {...field}
-                label={`${codeLabelText}*`}
-                type="text"
-                inputMode="numeric"
-                placeholder=""
-                autoComplete="one-time-code"
-                autoFocus
-                error={!!fieldState.error || !!codeSDKError}
-              />
-              <ULThemeFormMessage
-                sdkError={codeSDKError}
-                hasFormError={!!fieldState.error}
-              />
-            </FormItem>
+      <form
+        className="flex flex-col justify-end"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
+        <div>
+          {hasError && generalErrors.length > 0 && (
+            <LoginErrorBanner
+              message={
+                generalErrors[0]?.message ||
+                "An error occurred. Please try again."
+              }
+            />
           )}
-        />
 
-        {/* Remember device checkbox */}
-        {data?.showRememberDevice && (
           <FormField
             control={form.control}
-            name="rememberDevice"
-            render={({ field }) => (
-              <FormItem>
-                <div className="flex items-center space-x-2 my-4">
-                  <ULThemeCheckbox
-                    id="rememberDevice"
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                  />
-                  <Label
-                    htmlFor="rememberDevice"
-                    className="text-(length:--ul-theme-font-body-text-size) cursor-pointer"
-                  >
-                    {rememberDeviceText}
-                  </Label>
-                </div>
+            name="code"
+            rules={{
+              required: locales.form.fields.code.required,
+            }}
+            render={({ field, fieldState }) => (
+              <FormItem className="mb-3">
+                <PillField
+                  {...field}
+                  id="sms-code"
+                  value={String(field.value ?? "")}
+                  label={codeLabelText}
+                  type="text"
+                  inputMode="numeric"
+                  autoComplete="one-time-code"
+                  autoFocus
+                  error={!!fieldState.error || !!codeSDKError}
+                />
+                <ULThemeFormMessage
+                  sdkError={codeSDKError}
+                  hasFormError={!!fieldState.error}
+                />
               </FormItem>
             )}
           />
-        )}
 
-        {/* Submit button */}
-        <ULThemeButton
-          type="submit"
-          variant="primary"
-          className="w-full"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? locales.form.buttonSubmitting : buttonText}
-        </ULThemeButton>
+          {data?.showRememberDevice && (
+            <FormField
+              control={form.control}
+              name="rememberDevice"
+              render={({ field }) => (
+                <FormItem className="mb-4">
+                  <label className="flex cursor-pointer items-center gap-2 text-xs text-[#020618]">
+                    <input
+                      id="rememberDevice"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-[#D1D5DC]"
+                      checked={!!field.value}
+                      onChange={(event) => field.onChange(event.target.checked)}
+                    />
+                    {rememberDeviceText}
+                  </label>
+                </FormItem>
+              )}
+            />
+          )}
+        </div>
+
+        <LoginSubmitButton
+          loading={isSubmitting}
+          label={buttonText.toUpperCase()}
+          loadingLabel={buttonSubmittingText.toUpperCase()}
+        />
       </form>
     </Form>
   );

@@ -3,12 +3,14 @@
   "prompt": { "name": "reset-password" },
   "screen": {
     "name": "reset-password-email",
-    "data": { "username": "test@example.com" },
+    "data": { "username": "gaurav@mail.com" },
     "texts": {
-      "title": "Check Your Email",
-      "description": "Please check the email address test@example.com for instructions to reset your password.",
-      "pageTitle": "Check your email",
+      "title": "Forgot your password?",
+      "emailSentText": "Reset link has been sent",
+      "description": "Please follow the link sent to your email gau******@m****.com to reset your password. Please note the reset link is only valid for 15 mins.",
+      "pageTitle": "Forgot your password?",
       "resendLinkText": "Resend email",
+      "buttonText": "Done",
       "logoAltText": "Brand Logo"
     }
   },

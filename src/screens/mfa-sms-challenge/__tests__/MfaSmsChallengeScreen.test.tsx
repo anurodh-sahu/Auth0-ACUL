@@ -19,6 +19,16 @@ jest.mock("@/utils/helpers/tokenUtils", () => ({
   extractTokenValue: jest.fn(() => "bottom"),
 }));
 
+jest.mock("@/hooks/useLoginPageAssets", () => ({
+  useLoginPageAssets: () => ({
+    backgroundImage: "",
+    desktopTree: "",
+    mobileTree: "",
+    quote: "",
+    writer: "",
+  }),
+}));
+
 describe("MfaSmsChallengeScreen", () => {
   const renderScreen = async () => {
     await act(async () => {
@@ -34,12 +44,11 @@ describe("MfaSmsChallengeScreen", () => {
   it("should render screen with data from mock", async () => {
     await renderScreen();
 
-    // Verify it displays the mock data correctly
     expect(screen.getByText("Verify Your Identity")).toBeInTheDocument();
     expect(
       screen.getByText(/We've sent a text message to:/i)
     ).toBeInTheDocument();
-    expect(screen.getByDisplayValue("XXXXXXXXX1360")).toBeInTheDocument(); // Phone from mock
+    expect(screen.getByText(/XXXXXXXXX1360/i)).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /continue/i })
     ).toBeInTheDocument();
@@ -49,13 +58,6 @@ describe("MfaSmsChallengeScreen", () => {
     expect(screen.getByText("Didn't receive a code?")).toBeInTheDocument();
     expect(screen.getByText("Resend")).toBeInTheDocument();
     expect(screen.getByText("Try another method")).toBeInTheDocument();
-  });
-
-  it("should have phone number field disabled", async () => {
-    await renderScreen();
-
-    const phoneField = screen.getByDisplayValue("XXXXXXXXX1360");
-    expect(phoneField).toBeDisabled();
   });
 
   it("should have code input field enabled and focusable", async () => {

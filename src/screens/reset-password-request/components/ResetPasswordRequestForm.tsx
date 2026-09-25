@@ -71,9 +71,7 @@ function ResetPasswordRequestForm() {
       >
         {hasError && generalErrors.length > 0 && (
           <LoginErrorBanner
-            message={
-              generalErrors[0]?.message || locales.errors.errorOccurred
-            }
+            message={generalErrors[0]?.message || locales.errors.errorOccurred}
           />
         )}
 

@@ -1,0 +1,23 @@
+{
+  "rendering_mode": "advanced",
+  "context_configuration": ["screen.texts", "client.logo_uri"],
+  "default_head_tags_disabled": false,
+  "filters": {
+    "match_type": "includes_any",
+    "clients": [
+      { "id": "rucj8GcPVfaX1nxJEKDqUupxwbt9JzQM" },
+      { "id": "UKhlpX1TCscOa0wCEwxSvIjR90eR8XqP" }
+    ]
+  },
+  "head_tags": [
+    {
+      "tag": "script",
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/client2/main.js",
+        "type": "module"
+      }
+    }
+  ],
+  "use_page_template": false
+}

@@ -9,6 +9,7 @@ function Header() {
     <LoginHeading
       title={texts?.eventTitle || locales.header.title}
       description={texts?.description || locales.header.description}
+      descriptionClassName="text-base leading-6 text-[#00C951]"
     />
   );
 }

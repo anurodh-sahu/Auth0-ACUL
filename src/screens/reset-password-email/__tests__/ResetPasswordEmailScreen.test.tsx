@@ -29,22 +29,46 @@ describe("ResetPasswordEmailScreen", () => {
     await act(async () => {
       render(<ResetPasswordEmailScreen />);
     });
-    await screen.findByRole("heading", { name: /check your email/i });
+    await screen.findByRole("heading", { name: /forgot your password/i });
   };
 
   beforeEach(() => {
     jest.clearAllMocks();
+    (useScreen as jest.Mock).mockReturnValue({
+      name: "reset-password-email",
+      texts: {
+        pageTitle: "Mock Password Reset Email",
+        title: "Forgot your password?",
+        emailSentText: "Reset link has been sent",
+        description:
+          "Please follow the link sent to your email test@example.com to reset your password. Please note the reset link is only valid for 15 mins.",
+        resendLinkText: "Resend email",
+        buttonText: "Done",
+        buttonSubmitting: "Sending...",
+        logoAltText: "Brand Logo",
+      },
+      isCaptchaAvailable: false,
+      captchaProvider: null,
+      captchaSiteKey: null,
+      captchaImage: null,
+      captcha: null,
+      links: { login: "/u/login" },
+      data: {
+        username: "test@example.com",
+      },
+      backLink: null,
+      loginLink: "/u/login",
+    });
   });
 
-  it("renders the branded reset password email layout", async () => {
+  it("renders the branded reset password email screen", async () => {
     await renderScreen();
 
     expect(
-      screen.getByRole("heading", { name: /check your email/i })
+      screen.getByRole("heading", { name: /forgot your password/i })
     ).toBeInTheDocument();
-    expect(
-      screen.getByText(/we've sent a password reset link to your email/i)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/reset link has been sent/i)).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /done/i })).not.toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /resend email/i })
     ).toBeInTheDocument();
@@ -75,7 +99,7 @@ describe("ResetPasswordEmailScreen", () => {
       render(<ResetPasswordEmailScreen />);
     });
 
-    expect(document.title).toBe("Check your email");
+    expect(document.title).toBe("Forgot your password?");
   });
 
   it("should integrate with useErrors hook for error handling", async () => {
@@ -83,7 +107,7 @@ describe("ResetPasswordEmailScreen", () => {
 
     expect(useErrors).toHaveBeenCalled();
     expect(
-      screen.getByRole("heading", { name: /check your email/i })
+      screen.getByRole("heading", { name: /forgot your password/i })
     ).toBeInTheDocument();
   });
 
@@ -121,7 +145,7 @@ describe("ResetPasswordEmailScreen", () => {
     ).toBeInTheDocument();
   });
 
-  it("resends the email when the button is clicked", async () => {
+  it("resends the email when the resend button is clicked", async () => {
     await renderScreen();
 
     await act(async () => {

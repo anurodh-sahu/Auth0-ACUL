@@ -1,0 +1,23 @@
+{
+  "page": {
+    "title": "Security Check"
+  },
+  "header": {
+    "logoAlt": "Brand Logo",
+    "title": "Verify you're human",
+    "description": "Complete the security check to continue."
+  },
+  "form": {
+    "button": "Continue",
+    "buttonSubmitting": "Verifying...",
+    "fields": {
+      "captcha": {
+        "label": "Enter the code shown above*",
+        "required": "Please complete the CAPTCHA"
+      }
+    }
+  },
+  "errors": {
+    "errorOccurred": "An error occurred. Please try again."
+  }
+}

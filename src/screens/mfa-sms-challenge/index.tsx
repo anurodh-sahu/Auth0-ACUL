@@ -1,6 +1,7 @@
 import LoginPageShell from "@/components/login-page/LoginPageShell";
 import { applyAuth0Theme } from "@/utils/theme/themeEngine";
 
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MfaSmsChallengeForm from "./components/MfaSmsChallengeForm";
 import { useMfaSmsChallengeManager } from "./hooks/useMfaSmsChallengeManager";
@@ -17,6 +18,7 @@ function MfaSmsChallengeScreen() {
     <LoginPageShell logoAlt={logoAltText}>
       <Header />
       <MfaSmsChallengeForm />
+      <Footer />
     </LoginPageShell>
   );
 }

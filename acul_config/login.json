@@ -1,65 +1,36 @@
 {
-    "use_page_template":  false,
-    "tenant":  "ambit-poc",
-    "prompt":  "login",
-    "default_head_tags_disabled":  false,
-    "context_configuration":  [
-                                  "screen.texts",
-                                  "branding.themes.default",
-                                  "branding.settings",
-                                  "client.logo_uri",
-                                  "tenant.enabled_locales",
-                                  "untrusted_data.submitted_form_data"
-                              ],
-    "rendering_mode":  "advanced",
-    "head_tags":  [
-                      {
-                          "tag":  "script",
-                          "attributes":  {
-                                             "defer":  true,
-                                             "type":  "module",
-                                             "src":  "https://acul.innodeed.com/assets/shared/common.6XsmqhMd.js"
-                                         }
-                      },
-                      {
-                          "tag":  "script",
-                          "attributes":  {
-                                             "defer":  true,
-                                             "type":  "module",
-                                             "src":  "https://acul.innodeed.com/assets/shared/react-vendor.B1tQtnDa.js"
-                                         }
-                      },
-                      {
-                          "tag":  "link",
-                          "attributes":  {
-                                             "href":  "https://acul.innodeed.com/assets/shared/style.C5nkI4rf.css",
-                                             "rel":  "stylesheet"
-                                         }
-                      },
-                      {
-                          "tag":  "script",
-                          "attributes":  {
-                                             "defer":  true,
-                                             "type":  "module",
-                                             "src":  "https://acul.innodeed.com/assets/shared/vendor.Ciygta_6.js"
-                                         }
-                      },
-                      {
-                          "tag":  "script",
-                          "attributes":  {
-                                             "defer":  true,
-                                             "type":  "module",
-                                             "src":  "https://acul.innodeed.com/assets/login/index.DUWSz7GW.js"
-                                         }
-                      },
-                      {
-                          "tag":  "script",
-                          "attributes":  {
-                                             "defer":  true,
-                                             "type":  "module",
-                                             "src":  "https://acul.innodeed.com/assets/main.CCi4_QbM.js"
-                                         }
-                      }
-                  ],
-    "screen":  "login"
+  "tenant": "ambit-poc",
+  "prompt": "login",
+  "screen": "login",
+  "rendering_mode": "advanced",
+  "context_configuration": [
+    "screen.texts",
+    "branding.themes.default",
+    "branding.settings",
+    "client.logo_uri",
+    "tenant.enabled_locales",
+    "untrusted_data.submitted_form_data"
+  ],
+  "default_head_tags_disabled": false,
+  "filters": {
+    "match_type": "includes_any",
+    "clients": [
+      {
+        "id": "UKhlpX1TCscOa0wCEwxSvIjR90eR8XqP"
+      },
+      {
+        "id": "rucj8GcPVfaX1nxJEKDqUupxwbt9JzQM"
+      }
+    ]
+  },
+  "head_tags": [
+    {
+      "tag": "script",
+      "attributes": {
+        "defer": true,
+        "src": "https://acul.innodeed.com/assets/acul-loader.js?v=20260925d"
+      }
+    }
+  ],
+  "use_page_template": false
 }

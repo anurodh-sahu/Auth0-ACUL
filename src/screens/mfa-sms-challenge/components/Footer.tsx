@@ -1,7 +1,5 @@
 import { useResend } from "@auth0/auth0-acul-react/mfa-sms-challenge";
 
-import { ULThemeButton } from "@/components/ULThemeButton";
-
 import { useMfaSmsChallengeManager } from "../hooks/useMfaSmsChallengeManager";
 
 function Footer() {
@@ -14,7 +12,6 @@ function Footer() {
     locales,
   } = useMfaSmsChallengeManager();
 
-  // Use the resend hook for managing cooldown
   const { remaining, disabled } = useResend({
     timeoutSeconds: 30,
   });
@@ -30,60 +27,48 @@ function Footer() {
   const tryAnotherMethodText =
     texts?.pickAuthenticatorText || locales.footer.tryAnother;
 
-  const handleResendClick = async () => {
-    await handleResendCode();
-  };
-
-  const handleGetCallClick = async () => {
-    await handleGetACall();
-  };
-
-  const handleTryAnotherMethodClick = async () => {
-    await handleTryAnotherMethod();
-  };
+  const linkClassName =
+    "text-xs text-[#6D6E71] underline-offset-2 hover:underline disabled:cursor-not-allowed disabled:opacity-60";
 
   return (
-    <div className="text-center mt-4">
-      {/* Resend code link with optional get a call */}
-      <div className="mb-2">
-        <span className="text-(length:--ul-theme-font-body-text-size) font-body">
-          {resendText}{" "}
-        </span>
-        <ULThemeButton
-          onClick={handleResendClick}
-          variant="link"
-          size="link"
+    <div className="mt-4 text-center">
+      <div className="mb-2 text-xs text-[#6D6E71]">
+        <span>{resendText} </span>
+        <button
+          type="button"
+          className={linkClassName}
           disabled={disabled}
+          onClick={() => {
+            void handleResendCode();
+          }}
         >
           {disabled ? `${resendLinkText} in ${remaining}s` : resendLinkText}
-        </ULThemeButton>
-        {data?.showLinkVoice && (
+        </button>
+        {data?.showLinkVoice ? (
           <>
-            <span className="text-(length:--ul-theme-font-body-text-size) font-body">
-              {" "}
-              {separatorText}{" "}
-            </span>
-            <ULThemeButton
-              onClick={handleGetCallClick}
-              variant="link"
-              size="link"
+            <span> {separatorText} </span>
+            <button
+              type="button"
+              className={linkClassName}
+              onClick={() => {
+                void handleGetACall();
+              }}
             >
               {getCallText}
-            </ULThemeButton>
+            </button>
           </>
-        )}
+        ) : null}
       </div>
 
-      {/* Try another method link */}
-      <div>
-        <ULThemeButton
-          onClick={handleTryAnotherMethodClick}
-          variant="link"
-          size="link"
-        >
-          {tryAnotherMethodText}
-        </ULThemeButton>
-      </div>
+      <button
+        type="button"
+        className={linkClassName}
+        onClick={() => {
+          void handleTryAnotherMethod();
+        }}
+      >
+        {tryAnotherMethodText}
+      </button>
     </div>
   );
 }

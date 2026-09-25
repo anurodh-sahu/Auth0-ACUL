@@ -4,5 +4,8 @@
     "logoAlt": "Brand Logo",
     "title": "Password Changed!",
     "description": "Your password has been changed successfully."
+  },
+  "footer": {
+    "backButton": "Back to login"
   }
 }

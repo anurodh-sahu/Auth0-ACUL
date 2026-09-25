@@ -33,6 +33,22 @@
       }
     },
     {
+      "mfa-login-options": {
+        "mfa-login-options": {
+          "path": "/screens/mfa-login-options/mfa-login-options",
+          "variants": ["default"]
+        }
+      }
+    },
+    {
+      "captcha": {
+        "interstitial-captcha": {
+          "path": "/screens/captcha/interstitial-captcha",
+          "variants": ["default"]
+        }
+      }
+    },
+    {
       "reset-password": {
         "reset-password": {
           "path": "/screens/reset-password/reset-password",
