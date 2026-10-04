@@ -20,6 +20,18 @@ module.exports = {
       "<rootDir>/src/__mocks__/@auth0/auth0-acul-react/mfa-login-options.ts",
     "^@auth0/auth0-acul-react/interstitial-captcha$":
       "<rootDir>/src/__mocks__/@auth0/auth0-acul-react/interstitial-captcha.ts",
+    "^@auth0/auth0-acul-react/email-verification-result$":
+      "<rootDir>/src/__mocks__/@auth0/auth0-acul-react/email-verification-result.ts",
+    "^@auth0/auth0-acul-react/mfa-email-challenge$":
+      "<rootDir>/src/__mocks__/@auth0/auth0-acul-react/mfa-email-challenge.ts",
+    "^@auth0/auth0-acul-react/brute-force-protection-unblock$":
+      "<rootDir>/src/__mocks__/@auth0/auth0-acul-react/brute-force-protection-unblock.ts",
+    "^@auth0/auth0-acul-js/brute-force-protection-unblock$":
+      "<rootDir>/src/__mocks__/@auth0/auth0-acul-js/brute-force-protection-unblock.ts",
+    "^@auth0/auth0-acul-js/brute-force-protection-unblock-success$":
+      "<rootDir>/src/__mocks__/@auth0/auth0-acul-js/brute-force-protection-unblock-success.ts",
+    "^@auth0/auth0-acul-js/brute-force-protection-unblock-failure$":
+      "<rootDir>/src/__mocks__/@auth0/auth0-acul-js/brute-force-protection-unblock-failure.ts",
   },
   // Allow transforming ESM modules from node_modules.
   transformIgnorePatterns: [

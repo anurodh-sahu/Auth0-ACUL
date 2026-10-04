@@ -1,9 +1,8 @@
-import { useState, type CSSProperties, type ReactNode } from "react";
+import { type CSSProperties, type ReactNode, useState } from "react";
 
 import { ACUL_BRAND } from "@/brands/aculBrand";
 import { useLoginPageAssets } from "@/hooks/useLoginPageAssets";
 import { cn } from "@/lib/utils";
-import { extractTokenValue } from "@/utils/helpers/tokenUtils";
 
 import LoginPageModal from "./LoginPageModal";
 import LoginQuote from "./LoginQuote";
@@ -51,7 +50,8 @@ function LoginPageShell({
   const { backgroundImage, desktopTree, mobileTree, quote, writer } =
     useLoginPageAssets();
 
-  const logoSrc = extractTokenValue("--ul-theme-widget-logo-url");
+  // Application Logo (Applications → Settings → Application Logo); requires client.logo_uri in context_configuration.
+  const logoSrc = window.universal_login_context?.client?.logo_uri || "";
   const centerForm = ACUL_BRAND.centerForm;
   const showQuote = ACUL_BRAND.showQuote;
   const isModal = variant === "modal";
@@ -98,7 +98,7 @@ function LoginPageShell({
     );
   }
 
-  // client1: classic right-aligned layout with quotes.
+  // ambit-gpc: classic right-aligned layout with quotes.
   return (
     <div
       className="flex min-h-screen flex-col bg-[#F3F4F6] bg-cover bg-center bg-no-repeat font-jost"

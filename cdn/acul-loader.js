@@ -1,33 +1,57 @@
 /**
  * ACUL brand loader — single fixed head_tag entrypoint.
- * Brand is chosen from window.universal_login_context.client.id
- * (client.metadata is not present in UL context on this tenant).
+ *
+ * Brand resolution order:
+ * 1. client.metadata.acul_brand  (requires context_configuration entry)
+ * 2. BRAND_BY_CLIENT_ID fallback map
+ * 3. default "client1"
  *
  * Upload to: https://acul.innodeed.com/assets/acul-loader.js
  */
 (function loadAculBrand() {
-  // NOTE: client.metadata is NOT available in Universal Login on this tenant.
-  // Changing app metadata in the Dashboard has no effect — edit this map instead.
+  // Fallback when metadata is missing (some screens / degraded context).
   const BRAND_BY_CLIENT_ID = {
-    // Ambit Dev — red / centered / no quotes (temp verify brand switch)
+    // Ambit Dev — red / centered
     UKhlpX1TCscOa0wCEwxSvIjR90eR8XqP: "client2",
     // Ambit — gray LOGIN (classic right layout)
     rucj8GcPVfaX1nxJEKDqUupxwbt9JzQM: "client1",
   };
 
+  const ALLOWED_BRANDS = { client1: true, client2: true };
   const CDN_BASE = "https://acul.innodeed.com/assets";
-  const CACHE_BUST = "v=20260925d";
+  const CACHE_BUST = "v=20260925e";
   const MAX_WAIT_MS = 5000;
   const startedAt = Date.now();
 
+  function normalizeBrand(value) {
+    if (!value || typeof value !== "string") return null;
+    const brand = value.trim().toLowerCase();
+    return ALLOWED_BRANDS[brand] ? brand : null;
+  }
+
   function resolveBrand() {
-    const clientId = window.universal_login_context &&
-      window.universal_login_context.client &&
-      window.universal_login_context.client.id;
-    const brand = BRAND_BY_CLIENT_ID[clientId] || "client1";
+    const client =
+      window.universal_login_context && window.universal_login_context.client;
+    const clientId = client && client.id;
+    const fromMetadata = normalizeBrand(
+      client && client.metadata && client.metadata.acul_brand
+    );
+    const fromMap = normalizeBrand(BRAND_BY_CLIENT_ID[clientId]);
+    const brand = fromMetadata || fromMap || "client1";
+
     try {
-      console.info("[acul-loader] client=", clientId, "brand=", brand);
+      console.info(
+        "[acul-loader] client=",
+        clientId,
+        "metadata.acul_brand=",
+        client && client.metadata && client.metadata.acul_brand,
+        "brand=",
+        brand,
+        "source=",
+        fromMetadata ? "metadata" : fromMap ? "client-id-map" : "default"
+      );
     } catch (e) {}
+
     return brand;
   }
 
@@ -61,7 +85,9 @@
         return;
       }
       try {
-        console.warn("[acul-loader] universal_login_context missing; defaulting to client1");
+        console.warn(
+          "[acul-loader] universal_login_context missing; defaulting to client1"
+        );
       } catch (e) {}
     }
 

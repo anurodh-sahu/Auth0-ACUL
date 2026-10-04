@@ -70,7 +70,7 @@ function LoginForm() {
 
   const onSubmit = async (data: LoginOptions) => {
     await handleLogin({
-      username: data.username,
+      username: data.username ?? "",
       password: data.password,
       captcha: isCaptchaAvailable && captchaValue ? captchaValue : undefined,
     });

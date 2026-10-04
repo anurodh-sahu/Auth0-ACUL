@@ -9,7 +9,7 @@ export interface ULThemeSpinnerProps
   /**
    * Size of the spinner.
    */
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "page";
   /**
    * Optional class names for additional styling or overriding default styles.
    */
@@ -18,7 +18,7 @@ export interface ULThemeSpinnerProps
 
 const ULThemeSpinner = ({
   variant = "solid",
-  size = "sm",
+  size = "page",
   className,
   ...rest
 }: ULThemeSpinnerProps) => {

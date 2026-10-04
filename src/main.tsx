@@ -3,7 +3,10 @@ import { createRoot } from "react-dom/client";
 
 import "./index.css";
 
+import { prefetchLoginPageAssets } from "./utils/loginPageAssets";
 import App from "./App.tsx";
+
+prefetchLoginPageAssets();
 
 async function initializeApp() {
   /**

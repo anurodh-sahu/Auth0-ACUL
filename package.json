@@ -11,7 +11,7 @@
     "build:local": "PORT=8080 node ./scripts/build-local.js",
     "build:watch": "vite build --watch",
     "dev": "vite dev",
-    "dev:client1": "node ./scripts/dev-brand.js client1",
+    "dev:ambit-gpc": "node ./scripts/dev-brand.js ambit-gpc",
     "dev:client2": "node ./scripts/dev-brand.js client2",
     "preview": "vite preview",
     "preview:watch": "concurrently \"vite build --watch\" \"vite preview\"",
@@ -23,7 +23,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@auth0/auth0-acul-react": "1.0.0",
+    "@auth0/auth0-acul-react": "1.9.0",
     "@base-ui-components/react": "^1.0.0-beta.1",
     "@hcaptcha/react-hcaptcha": "^1.12.1",
     "class-variance-authority": "^0.7.1",

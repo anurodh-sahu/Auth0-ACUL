@@ -17,12 +17,12 @@ describe("ULThemeSpinner", () => {
   it("applies the correct size class when size prop is provided", () => {
     const { getByTestId } = render(<ULThemeSpinner size="lg" />);
     const spinner = getByTestId("ul-theme-spinner");
-    expect(spinner).toHaveClass("size-12");
+    expect(spinner.firstElementChild).toHaveClass("size-12");
   });
 
   it("applies the correct variant class when variant prop is provided", () => {
     const { getByTestId } = render(<ULThemeSpinner variant="dots" />);
     const spinner = getByTestId("ul-theme-spinner");
-    expect(spinner).toHaveClass("border-dotted");
+    expect(spinner.firstElementChild).toHaveClass("border-dotted");
   });
 });

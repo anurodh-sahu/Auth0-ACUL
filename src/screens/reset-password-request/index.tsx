@@ -1,7 +1,6 @@
 import LoginPageShell from "@/components/login-page/LoginPageShell";
 import { applyAuth0Theme } from "@/utils/theme";
 
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ResetPasswordRequestForm from "./components/ResetPasswordRequestForm";
 import { useResetPasswordRequestManager } from "./hooks/resetPasswordRequestManager";
@@ -19,7 +18,6 @@ function ResetPasswordRequestScreen() {
     <LoginPageShell logoAlt={logoAltText}>
       <Header />
       <ResetPasswordRequestForm />
-      <Footer />
     </LoginPageShell>
   );
 }

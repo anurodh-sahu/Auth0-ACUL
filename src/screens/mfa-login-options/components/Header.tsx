@@ -1,6 +1,8 @@
 import { ChevronLeft } from "lucide-react";
 
+import { ACUL_BRAND } from "@/brands/aculBrand";
 import LoginHeading from "@/components/login-page/LoginHeading";
+import { cn } from "@/lib/utils";
 
 import { useMfaLoginOptionsManager } from "../hooks/useMFALoginOptionsManager";
 
@@ -20,8 +22,11 @@ function Header() {
       </button>
       <LoginHeading
         title={texts?.title || locales.header.title}
-        description={texts?.description || locales.header.description}
+        className="login:text-center"
       />
+      <p className={cn("text-center", ACUL_BRAND.descriptionClassName)}>
+        {texts?.description || locales.header.description}
+      </p>
     </div>
   );
 }

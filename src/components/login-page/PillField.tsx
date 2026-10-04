@@ -34,7 +34,7 @@ function PillField({
   ...inputProps
 }: PillFieldProps) {
   return (
-    <div>
+    <div className="w-full min-w-0 max-w-full">
       <label
         htmlFor={id}
         className="mb-3 block font-medium text-xs leading-4 tracking-normal text-[#020618]"
@@ -43,17 +43,18 @@ function PillField({
       </label>
       <div
         className={cn(
-          "flex items-center gap-3 rounded-full border bg-white/95 px-4 py-3",
+          "flex w-full min-w-0 max-w-full items-center gap-3 rounded-full border bg-white/95 px-4 py-3",
           error ? "border-red-300" : "border-[#D1D5DC]"
         )}
       >
         <input
           id={id}
+          {...inputProps}
+          size={1}
           className={cn(
-            "min-w-0 flex-1 border-0 bg-transparent text-[15px] outline-none",
+            "min-w-0 w-full flex-1 border-0 bg-transparent text-[15px] outline-none",
             className
           )}
-          {...inputProps}
         />
         {trailing}
       </div>

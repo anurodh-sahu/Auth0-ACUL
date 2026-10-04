@@ -3,7 +3,6 @@
  */
 import { useLoginIdentifiers } from "@auth0/auth0-acul-react/reset-password-request";
 import {
-  backToLogin,
   resetPassword,
   useErrors,
   useScreen,
@@ -115,10 +114,18 @@ describe("ResetPasswordRequestScreen", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders Footer and calls back-to-login action", async () => {
+  it("renders Forgot Login ID link like the login page", () => {
     render(<ResetPasswordRequestScreen />);
-    await ScreenTestUtils.clickButton(/Back to My App/i);
-    expect(backToLogin).toHaveBeenCalled();
+    expect(
+      screen.getByRole("link", { name: "Forgot Login ID?" })
+    ).toHaveAttribute("href", expect.stringContaining("/forget-userId"));
+  });
+
+  it("does not render a back link", () => {
+    render(<ResetPasswordRequestScreen />);
+    expect(
+      screen.queryByRole("button", { name: /back to/i })
+    ).not.toBeInTheDocument();
   });
 
   it("renders correct description for phone-only identifier", () => {

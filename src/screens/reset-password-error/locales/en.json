@@ -6,6 +6,6 @@
     "description": "Something went wrong. Please return to the login page and select \"Forgot Your Password\" to try again."
   },
   "footer": {
-    "backButton": "Back to login"
+    "loginButton": "Back to Login"
   }
 }

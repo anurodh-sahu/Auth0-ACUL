@@ -9,8 +9,9 @@ import Captcha from "@/components/Captcha/index";
 import { ULThemeFormMessage } from "@/components/form";
 import LoginErrorBanner from "@/components/login-page/LoginErrorBanner";
 import LoginSubmitButton from "@/components/login-page/LoginSubmitButton";
-import PillField from "@/components/login-page/PillField";
+import PillField, { PillFieldLink } from "@/components/login-page/PillField";
 import { Form, FormField, FormItem } from "@/components/ui/form";
+import { FORGOT_LOGIN_ID_URL, LOGIN_PAGE_COPY } from "@/constants/loginPage";
 import { useCaptcha } from "@/hooks/useCaptcha";
 import { getIdentifierDetails } from "@/utils/helpers/identifierUtils";
 
@@ -88,6 +89,11 @@ function ResetPasswordRequestForm() {
                 autoComplete={identifierDetails.autoComplete}
                 autoFocus
                 error={!!fieldState.error || !!usernameSDKError}
+                trailing={
+                  <PillFieldLink href={FORGOT_LOGIN_ID_URL}>
+                    {LOGIN_PAGE_COPY.forgotLoginId}
+                  </PillFieldLink>
+                }
               />
               <ULThemeFormMessage
                 sdkError={usernameSDKError}

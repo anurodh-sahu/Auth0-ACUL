@@ -3,12 +3,23 @@
 import { lazy } from "react";
 
 const SCREEN_COMPONENTS: Record<string, React.ComponentType> = {
-  "interstitial-captcha": lazy(
-    () => import("@/screens/interstitial-captcha")
+  "brute-force-protection-unblock": lazy(
+    () => import("@/screens/brute-force-protection-unblock")
   ),
+  "brute-force-protection-unblock-failure": lazy(
+    () => import("@/screens/brute-force-protection-unblock-failure")
+  ),
+  "brute-force-protection-unblock-success": lazy(
+    () => import("@/screens/brute-force-protection-unblock-success")
+  ),
+  "email-verification-result": lazy(
+    () => import("@/screens/email-verification-result")
+  ),
+  "interstitial-captcha": lazy(() => import("@/screens/interstitial-captcha")),
   "login-id": lazy(() => import("@/screens/login-id")),
   login: lazy(() => import("@/screens/login")),
   "mfa-sms-challenge": lazy(() => import("@/screens/mfa-sms-challenge")),
+  "mfa-email-challenge": lazy(() => import("@/screens/mfa-email-challenge")),
   "mfa-otp-challenge": lazy(() => import("@/screens/mfa-otp-challenge")),
   "mfa-login-options": lazy(() => import("@/screens/mfa-login-options")),
   "reset-password": lazy(() => import("@/screens/reset-password")),

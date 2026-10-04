@@ -1,24 +1,25 @@
+import { ACUL_BRAND } from "@/brands/aculBrand";
+
 import { useResetPasswordErrorManager } from "../hooks/resetPasswordErrorManager";
 
 function Footer() {
-  const { texts, locales, loginHref } = useResetPasswordErrorManager();
+  const { locales, backToAppHref } = useResetPasswordErrorManager();
 
-  // Match Auth0 default: only show when a back_to_app / login link exists.
-  if (!loginHref) {
+  if (!backToAppHref) {
     return null;
   }
 
-  const backLabel =
-    texts?.backToLoginLinkText || locales.footer.backButton;
-
   return (
-    <div className="mt-4 text-center">
-      <a
-        href={loginHref}
-        className="text-xs text-[#6D6E71] underline-offset-2 hover:underline"
+    <div className="relative mt-4 flex w-full shrink-0 items-center">
+      <button
+        type="button"
+        className={ACUL_BRAND.submitButtonClassName}
+        onClick={() => {
+          window.location.assign(backToAppHref);
+        }}
       >
-        {backLabel}
-      </a>
+        <span>{locales.footer.loginButton.toUpperCase()}</span>
+      </button>
     </div>
   );
 }

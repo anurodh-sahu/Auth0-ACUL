@@ -11,18 +11,8 @@ import locales from "../locales/en.json";
  *
  */
 type ScreenWithLinks = ScreenMembersOnResetPasswordSuccess & {
-  links?: { login?: string; back_to_app?: string } | null;
-  loginLink?: string | null;
+  links?: { back_to_app?: string } | null;
 };
-
-function resolveBackHref(screen: ScreenWithLinks): string | undefined {
-  return (
-    screen.links?.back_to_app ||
-    screen.loginLink ||
-    screen.links?.login ||
-    undefined
-  );
-}
 
 export const useResetPasswordSuccessManager = () => {
   const screen = useScreen() as ScreenWithLinks;
@@ -30,11 +20,10 @@ export const useResetPasswordSuccessManager = () => {
 
   return {
     resetPasswordSuccess: useResetPasswordSuccess(),
-    texts: (texts || {}) as ScreenMembersOnResetPasswordSuccess["texts"] & {
-      backToLoginLinkText?: string;
-    },
+    texts: (texts || {}) as ScreenMembersOnResetPasswordSuccess["texts"],
     data: data || {},
     locales,
-    loginHref: resolveBackHref(screen),
+    // Auth0 only provides back_to_app when an Application or Tenant Login URI is configured.
+    backToAppHref: screen.links?.back_to_app || undefined,
   };
 };

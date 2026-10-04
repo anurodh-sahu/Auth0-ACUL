@@ -93,6 +93,7 @@ export const createMockLoginIdInstance = (): MockLoginIdInstance => ({
       "/u/login/password-reset-start/Username-Password-Authentication?state=mocked_state123",
     data: {},
     publicKey: null,
+    googleOneTapConfig: null,
   },
   transaction: {
     hasErrors: false,

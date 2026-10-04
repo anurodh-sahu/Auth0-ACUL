@@ -68,10 +68,27 @@ describe("ResetPasswordEmailScreen", () => {
       screen.getByRole("heading", { name: /forgot your password/i })
     ).toBeInTheDocument();
     expect(screen.getByText(/reset link has been sent/i)).toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: /done/i })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("link", { name: /done/i })
+    ).not.toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /resend email/i })
     ).toBeInTheDocument();
+  });
+
+  it("refers to the email associated with the entered username", async () => {
+    (useScreen as jest.Mock).mockReturnValue({
+      ...(useScreen as jest.Mock)(),
+      texts: { title: "Forgot your password?" },
+      data: { username: "jdoe" },
+    });
+
+    await renderScreen();
+
+    expect(
+      screen.getByText(/sent to the email address associated with jdoe/i)
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/\*\*\*/)).not.toBeInTheDocument();
   });
 
   it("sets correct document title from SDK", async () => {

@@ -1,0 +1,31 @@
+{
+  "page": {
+    "title": "Verify Your Identity - MFA"
+  },
+  "header": {
+    "logoAlt": "Application Logo",
+    "title": "Verify Your Identity",
+    "description": "We've sent an email with your code to:"
+  },
+  "form": {
+    "fields": {
+      "code": {
+        "label": "Enter the code",
+        "required": "Please enter the verification code."
+      }
+    },
+    "button": "Continue",
+    "buttonSubmitting": "Verifying...",
+    "rememberDevice": "Remember this device for 30 days"
+  },
+  "footer": {
+    "resend": {
+      "text": "Didn't receive an email?",
+      "linkText": "Resend"
+    },
+    "tryAnother": "Try another method"
+  },
+  "errors": {
+    "errorOccurred": "An error occurred. Please try again."
+  }
+}

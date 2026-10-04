@@ -59,6 +59,7 @@ export const createMockLoginInstance = (): MockLoginInstance => ({
     resetPasswordLink:
       "/u/login/password-reset-start/Username-Password-Authentication?state=mocked_state123",
     data: {},
+    googleOneTapConfig: null,
   },
   transaction: {
     hasErrors: false,

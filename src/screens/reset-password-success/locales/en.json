@@ -2,10 +2,11 @@
   "pageTitle": "Password reset successful",
   "header": {
     "logoAlt": "Brand Logo",
-    "title": "Password Changed!",
+    "title": "Your Password has been updated.",
     "description": "Your password has been changed successfully."
   },
   "footer": {
-    "backButton": "Back to login"
+    "loginButton": "Back to Login",
+    "redirecting": "Redirecting to login in {{seconds}}s..."
   }
 }

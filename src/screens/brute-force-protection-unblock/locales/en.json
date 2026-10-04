@@ -1,0 +1,14 @@
+{
+  "pageTitle": "Unblock your account",
+  "header": {
+    "title": "Unblock Your Account",
+    "description": "Your account was blocked after too many failed login attempts. Click the button below to unblock it."
+  },
+  "form": {
+    "button": "Unblock my account",
+    "buttonSubmitting": "Unblocking..."
+  },
+  "errors": {
+    "errorOccurred": "An error occurred"
+  }
+}

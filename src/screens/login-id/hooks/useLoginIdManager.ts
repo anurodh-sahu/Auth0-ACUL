@@ -34,7 +34,7 @@ export const useLoginIdManager = () => {
   const handleLoginId = async (payload: LoginOptions): Promise<void> => {
     // Clean and prepare data
     const options: LoginOptions = {
-      username: payload.username.trim(),
+      username: (payload.username ?? "").trim(),
     };
 
     if (screen.isCaptchaAvailable && payload?.captcha?.trim()) {

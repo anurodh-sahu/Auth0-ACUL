@@ -8,11 +8,10 @@ import LoginErrorBanner from "@/components/login-page/LoginErrorBanner";
 import LoginHeading from "@/components/login-page/LoginHeading";
 import LoginSubmitButton from "@/components/login-page/LoginSubmitButton";
 import { Form } from "@/components/ui/form";
+import { cn } from "@/lib/utils";
 import { translate } from "@/utils/helpers/localeTranslate";
 
 import { useResetPasswordEmailManager } from "../hooks/useResetPasswordEmailManager";
-import { maskEmail } from "../utils/maskEmail";
-
 function EmailSentModal() {
   const { texts, data, handleResendEmail, locales } =
     useResetPasswordEmailManager();
@@ -28,15 +27,10 @@ function EmailSentModal() {
 
   const title = locales.header.title;
   const sentTitle = texts?.emailSentText || locales.header.sentTitle;
-  const rawEmail = data?.username || "";
-  const displayEmail = rawEmail ? maskEmail(rawEmail) : "";
+  const username = data?.username || "";
   const description =
     texts?.description ||
-    translate(
-      "header.description",
-      { email: displayEmail || rawEmail },
-      locales
-    );
+    translate("header.description", { username }, locales);
 
   const resendLabel = texts?.resendLinkText || locales.form.resend;
   const resendSubmitting =
@@ -52,16 +46,17 @@ function EmailSentModal() {
 
   return (
     <div className="flex flex-col">
-      <LoginHeading title={title} description={description} />
+      <LoginHeading title={title} />
+      <p className={cn("mb-3", ACUL_BRAND.descriptionClassName)}>
+        {description}
+      </p>
 
       <p className={ACUL_BRAND.descriptionClassName}>{sentTitle}</p>
 
       {hasError && generalErrors.length > 0 ? (
         <div className="mt-3">
           <LoginErrorBanner
-            message={
-              generalErrors[0]?.message || locales.errors.errorOccurred
-            }
+            message={generalErrors[0]?.message || locales.errors.errorOccurred}
           />
         </div>
       ) : null}

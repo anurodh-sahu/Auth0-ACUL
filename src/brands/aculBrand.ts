@@ -1,6 +1,6 @@
 import { BUILD_ACUL_BRAND } from "./brand.generated";
 
-export type AculBrandId = "client1" | "client2";
+export type AculBrandId = "ambit-gpc" | "client2";
 
 export interface AculBrandTheme {
   id: AculBrandId;
@@ -22,7 +22,7 @@ export interface AculBrandTheme {
 /**
  * Brand is fixed at build time via brand.generated.ts (written by build:brands).
  * client2: centered, no quotes, red verify theme.
- * client1: classic right layout, grey.
+ * ambit-gpc: classic right layout, grey.
  */
 function resolveBrand(): AculBrandTheme {
   // Compare the const string directly (no .toLowerCase()) so Rollup drops the other branch.
@@ -48,7 +48,7 @@ function resolveBrand(): AculBrandTheme {
   }
 
   return {
-    id: "client1",
+    id: "ambit-gpc",
     label: "Ambit Dev",
     titleClassName:
       "font-normal text-xl leading-7 tracking-normal text-[#020618]",

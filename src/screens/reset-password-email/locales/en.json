@@ -6,7 +6,7 @@
     "logoAlt": "Brand Logo",
     "title": "Forgot your password?",
     "sentTitle": "Reset link has been sent",
-    "description": "Please follow the link sent to your email {{email}} to reset your password. Please note the reset link is only valid for 15 mins."
+    "description": "Please follow the link sent to the email address associated with {{username}} to reset your password. Please note the reset link is only valid for 15 mins."
   },
   "form": {
     "button": "Done",

@@ -1,0 +1,21 @@
+{
+  "client": { "id": "client", "name": "App" },
+  "prompt": { "name": "mfa-email" },
+  "screen": {
+    "name": "mfa-email-challenge",
+    "texts": {
+      "pageTitle": "Verify Your Identity - MFA",
+      "title": "Verify Your Identity",
+      "description": "We've sent an email with your code to:",
+      "placeholder": "Enter the code",
+      "buttonText": "Continue",
+      "rememberMeText": "Remember this device for 30 days",
+      "resendText": "Didn't receive an email?",
+      "resendActionText": "Resend",
+      "pickAuthenticatorText": "Try another method"
+    },
+    "data": { "email": "j***@example.com", "showRememberDevice": true }
+  },
+  "transaction": { "state": "state" },
+  "tenant": { "friendly_name": "Ambit" }
+}

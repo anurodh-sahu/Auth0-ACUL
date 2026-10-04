@@ -1,27 +1,62 @@
+import { useEffect, useState } from "react";
+
+import { ACUL_BRAND } from "@/brands/aculBrand";
+import { cn } from "@/lib/utils";
+import { translate } from "@/utils/helpers/localeTranslate";
+import { redirectTo } from "@/utils/helpers/redirect";
+
 import { useResetPasswordSuccessManager } from "../hooks/resetPasswordSuccessManager";
 
-function Footer() {
-  const { texts, locales, loginHref } = useResetPasswordSuccessManager();
+const AUTO_REDIRECT_SECONDS = 5;
 
-  // Match Auth0 default: only show when a back_to_app / login link exists.
-  if (!loginHref) {
+function Footer() {
+  const { locales, backToAppHref } = useResetPasswordSuccessManager();
+  const [secondsLeft, setSecondsLeft] = useState(AUTO_REDIRECT_SECONDS);
+
+  useEffect(() => {
+    if (!backToAppHref) {
+      return undefined;
+    }
+    if (secondsLeft <= 0) {
+      redirectTo(backToAppHref);
+      return undefined;
+    }
+    const timer = setTimeout(() => setSecondsLeft((s) => s - 1), 1000);
+    return () => clearTimeout(timer);
+  }, [backToAppHref, secondsLeft]);
+
+  if (!backToAppHref) {
     return null;
   }
 
-  const backLabel =
-    texts?.buttonText ||
-    texts?.backToLoginLinkText ||
-    locales.footer.backButton;
-
   return (
-    <div className="mt-4 text-center">
-      <a
-        href={loginHref}
-        className="text-xs text-[#6D6E71] underline-offset-2 hover:underline"
+    <>
+      <p
+        className={cn(
+          "mt-2 text-center",
+          ACUL_BRAND.descriptionClassName,
+          "text-sm"
+        )}
+        aria-live="polite"
       >
-        {backLabel}
-      </a>
-    </div>
+        {translate(
+          "footer.redirecting",
+          { seconds: String(Math.max(secondsLeft, 0)) },
+          locales
+        )}
+      </p>
+      <div className="relative mt-4 flex w-full shrink-0 items-center">
+        <button
+          type="button"
+          className={ACUL_BRAND.submitButtonClassName}
+          onClick={() => {
+            redirectTo(backToAppHref);
+          }}
+        >
+          <span>{locales.footer.loginButton.toUpperCase()}</span>
+        </button>
+      </div>
+    </>
   );
 }
 

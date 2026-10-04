@@ -27,10 +27,19 @@ describe("ResetPasswordErrorScreen", () => {
 
     expect(screen.getByText(/An Error Occurred/i)).toBeInTheDocument();
     expect(screen.getByText(/Something went wrong/i)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /back to login/i })).toHaveAttribute(
-      "href",
-      "/u/login"
+    expect(screen.getByRole("heading")).toHaveClass("text-[#E7000B]");
+    expect(screen.getByRole("heading").parentElement).toHaveClass(
+      "login:text-center"
     );
+    expect(screen.getByRole("heading").parentElement).not.toHaveClass(
+      "login:text-left"
+    );
+    expect(screen.getByText(/Something went wrong/i)).not.toHaveClass(
+      "text-[#E7000B]"
+    );
+    expect(
+      screen.getByRole("button", { name: /back to login/i })
+    ).toBeInTheDocument();
   });
 
   it("sets correct document title from SDK", () => {
@@ -39,7 +48,7 @@ describe("ResetPasswordErrorScreen", () => {
     expect(document.title).toBe("Password Reset Failed");
   });
 
-  it("hides back link when Auth0 does not provide back_to_app", () => {
+  it("hides Back to Login button when Auth0 does not provide back_to_app", () => {
     (useScreen as jest.Mock).mockReturnValue({
       name: "reset-password-error",
       texts: {

@@ -1,6 +1,5 @@
 import { useLoginIdentifiers } from "@auth0/auth0-acul-react/reset-password-request";
 import {
-  backToLogin,
   resetPassword,
   useErrors,
   useResetPasswordRequest,
@@ -36,14 +35,9 @@ export const useResetPasswordRequestManager = () => {
     );
   };
 
-  const handleBackToLogin = async (): Promise<void> => {
-    await executeSafely("Navigating back to login", backToLogin);
-  };
-
   return {
     resetPasswordRequest: useResetPasswordRequest(),
     handleResetPasswordRequest,
-    handleBackToLogin,
     texts: (texts || {}) as ScreenMembersOnResetPasswordRequest["texts"],
     errors: useTransaction().errors || [],
     allowedIdentifiers: useTransaction().allowedIdentifiers || [],

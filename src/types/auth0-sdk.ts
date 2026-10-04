@@ -13,6 +13,7 @@ import type {
  */
 export interface UniversalLoginContext {
   branding: BrandingMembers;
+  client?: { id?: string; name?: string; logo_uri?: string };
   organization?: OrganizationMembers;
   screen: ScreenMembers;
   transaction: TransactionMembers;

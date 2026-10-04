@@ -38,6 +38,21 @@ describe("MfaLoginOptionsScreen", () => {
     expect(screen.getByText(/Security Key/i)).toBeInTheDocument();
   });
 
+  it("renders a centered title with the description below it, like other modals", async () => {
+    await renderScreen();
+
+    const heading = screen.getByRole("heading", {
+      name: /choose an authentication method/i,
+    });
+    expect(heading.parentElement).toHaveClass("login:text-center");
+    expect(heading.parentElement).not.toHaveClass("login:text-left");
+    const description = screen.getByText("Add another authentication method.");
+    expect(description).toHaveClass("text-center");
+    expect(
+      screen.getByRole("button", { name: /go back/i })
+    ).toBeInTheDocument();
+  });
+
   it("applies theme on load", async () => {
     await renderScreen();
 

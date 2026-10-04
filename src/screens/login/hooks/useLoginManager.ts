@@ -1,8 +1,3 @@
-import {
-  useLogin,
-  useScreen,
-  useTransaction,
-} from "@auth0/auth0-acul-react/login";
 import type {
   FederatedLoginOptions,
   LoginMembers,
@@ -10,6 +5,11 @@ import type {
   ScreenMembersOnLogin,
   TransactionMembersOnLogin,
 } from "@auth0/auth0-acul-js/login";
+import {
+  useLogin,
+  useScreen,
+  useTransaction,
+} from "@auth0/auth0-acul-react/login";
 
 import locales from "@/screens/login/locales/en.json";
 import { executeSafely } from "@/utils/helpers/executeSafely";
@@ -27,7 +27,7 @@ export const useLoginManager = () => {
 
   const handleLogin = async (payload: LoginOptions): Promise<void> => {
     const options: LoginOptions = {
-      username: payload.username.trim(),
+      username: (payload.username ?? "").trim(),
       password: payload.password,
     };
 

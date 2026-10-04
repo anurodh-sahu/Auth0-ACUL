@@ -6,8 +6,7 @@ import Header from "./components/Header";
 import { useResetPasswordErrorManager } from "./hooks/resetPasswordErrorManager";
 
 function ResetPasswordErrorScreen() {
-  const { resetPasswordError, texts, locales } =
-    useResetPasswordErrorManager();
+  const { resetPasswordError, texts, locales } = useResetPasswordErrorManager();
 
   applyAuth0Theme(resetPasswordError);
   document.title = texts?.pageTitle || locales.pageTitle;

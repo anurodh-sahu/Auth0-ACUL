@@ -1,5 +1,7 @@
 import { lazy, Suspense } from "react";
 
+import { Spinner } from "@/components/ui/spinner";
+
 /**
  * Main App Component
  * Conditionally loads DevScreenManager or ProdScreenManager based on environment
@@ -17,7 +19,7 @@ const ScreenManager = lazy(() => {
 
 export default function App() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Spinner />}>
       <ScreenManager />
     </Suspense>
   );

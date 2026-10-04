@@ -24,10 +24,10 @@ if (fs.existsSync(screensDir)) {
 }
 
 const aculBrand = (process.env.VITE_ACUL_BRAND || "").trim().toLowerCase();
-const isBrandBuild = aculBrand === "client1" || aculBrand === "client2";
+const isBrandBuild = aculBrand === "ambit-gpc" || aculBrand === "client2";
 // Stable filenames so Auth0 Liquid {{client.metadata.acul_brand}} URLs work without hash churn.
 const useStableNames = isBrandBuild;
-// Brand builds upload to https://acul.innodeed.com/assets/{client1|client2}/...
+// Brand builds upload to https://acul.innodeed.com/assets/{ambit-gpc|client2}/...
 const brandAssetPrefix = isBrandBuild ? "" : "assets/";
 
 // https://vite.dev/config/

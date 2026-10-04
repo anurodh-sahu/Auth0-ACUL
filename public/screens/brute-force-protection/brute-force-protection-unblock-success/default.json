@@ -1,0 +1,14 @@
+{
+  "client": { "id": "client", "name": "App" },
+  "prompt": { "name": "brute-force-protection" },
+  "screen": {
+    "name": "brute-force-protection-unblock-success",
+    "texts": {
+      "pageTitle": "Account unblocked",
+      "title": "Account Unblocked",
+      "description": "Your account has been unblocked. You can now log in again."
+    }
+  },
+  "transaction": { "state": "state" },
+  "tenant": { "friendly_name": "Ambit" }
+}

@@ -3,14 +3,17 @@
 exports[`ULThemeSpinner renders correctly and matches snapshot 1`] = `
 <div>
   <div
-    class="text-surface inline-block rounded-full duration-[5000] ease-linear border-primary animate-spin border-2 border-e-transparent size-4"
+    aria-busy="true"
+    aria-label="Loading page"
+    aria-live="polite"
+    class="fixed inset-0 z-50 flex min-h-screen items-center justify-center bg-white/30"
     data-testid="ul-theme-spinner"
+    role="status"
   >
-    <span
-      class="sr-only"
-    >
-      Loading...
-    </span>
+    <div
+      aria-hidden="true"
+      class="text-surface inline-block rounded-full duration-[5000] ease-linear border-[#E7000B] animate-spin border-6 border-t-transparent h-40 w-40"
+    />
   </div>
 </div>
 `;

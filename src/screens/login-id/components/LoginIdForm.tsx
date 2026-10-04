@@ -98,7 +98,7 @@ function LoginIdForm() {
 
   const onSubmit = async (data: LoginOptions) => {
     await handleLoginId({
-      username: data.username,
+      username: data.username ?? "",
       captcha: isCaptchaAvailable && captchaValue ? captchaValue : undefined,
     });
   };

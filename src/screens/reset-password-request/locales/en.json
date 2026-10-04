@@ -14,9 +14,6 @@
     "button": "Continue",
     "submittingState": "Verifying"
   },
-  "footer": {
-    "backButton": "Back to My App"
-  },
   "errors": {
     "errorOccurred": "An error occurred"
   }

@@ -25,6 +25,14 @@
       }
     },
     {
+      "mfa-email": {
+        "mfa-email-challenge": {
+          "path": "/screens/mfa-email/mfa-email-challenge",
+          "variants": ["default"]
+        }
+      }
+    },
+    {
       "mfa-otp": {
         "mfa-otp-challenge": {
           "path": "/screens/mfa-otp/mfa-otp-challenge",
@@ -44,6 +52,30 @@
       "captcha": {
         "interstitial-captcha": {
           "path": "/screens/captcha/interstitial-captcha",
+          "variants": ["default"]
+        }
+      }
+    },
+    {
+      "brute-force-protection": {
+        "brute-force-protection-unblock": {
+          "path": "/screens/brute-force-protection/brute-force-protection-unblock",
+          "variants": ["default"]
+        },
+        "brute-force-protection-unblock-success": {
+          "path": "/screens/brute-force-protection/brute-force-protection-unblock-success",
+          "variants": ["default"]
+        },
+        "brute-force-protection-unblock-failure": {
+          "path": "/screens/brute-force-protection/brute-force-protection-unblock-failure",
+          "variants": ["default"]
+        }
+      }
+    },
+    {
+      "email-verification": {
+        "email-verification-result": {
+          "path": "/screens/email-verification/email-verification-result",
           "variants": ["default"]
         }
       }

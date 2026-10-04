@@ -11,7 +11,7 @@ function Header() {
     texts?.description ||
     translate(
       "header.description",
-      { email: data?.username || "" },
+      { username: data?.username || "" },
       locales
     );
 
